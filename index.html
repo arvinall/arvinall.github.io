@@ -1,20 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="allrhythmicprose" ng-controller="main">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALL's Rhythmic Prose</title>
+    <style media="screen">
+      @import "style/bootstrap.min.css";
+      @import "style/main.css";
+    </style>
+  </head>
   <body>
-    <textarea id="text-input" oninput="this.editor.update()"
-              rows="6" cols="60">Type **Markdown** here.</textarea>
-    <div id="preview"> </div>
-    <script src="js/markdown.js"></script>
-    <script>
-      function Editor(input, preview) {
-        this.update = function () {
-          preview.innerHTML = markdown.toHTML(input.value);
-        };
-        input.editor = this;
-        this.update();
-      }
-      var $ = function (id) { return document.getElementById(id); };
-      new Editor($("text-input"), $("preview"));
-    </script>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1><a href="//arvinall.github.com">ALL's Rhythmic Prose</a></h1>
+        <p>arvinall's poetry, prose and rhythmic prose, collection</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3" dir="rtl">
+          <ul ng-repeat="detail in details">
+<!--        <li><a class="CPointer" ng-click="load(1)">find the bad ass</a></li>
+            <li><a class="CPointer" ng-click="load(2)">big head letter</a></li>-->
+            <li><dl><abbr title="{{detail.faName}}"><a class="CPointer" ng-click="load(detail.id)">{{detail.enName}}</a></abbr></dl></li>
+          </ul>
+        </div>
+        <div class="col-sm-7 faFont" id="res" dir="rtl"></div>
+      </div>
+    </div>
+
+    <!--<a ng-click="load(1)">a big head letter</a>
+    <div id="res"></div>-->
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/markdown.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>

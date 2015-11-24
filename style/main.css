@@ -1,0 +1,13 @@
+@font-face {
+    font-family: ANafis;
+    src: url(font/anafis.ttf);
+}
+.faFont{
+  font-family: ANafis;
+}
+.CPointer{
+  cursor: pointer;
+}
+.wob{
+  display: initial;
+}
