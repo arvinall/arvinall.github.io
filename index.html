@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="allrhythmicprose" ng-controller="main">
+<html ng-app="allrhythmicprose">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ALL's Rhythmic Prose</title>
+    <meta name="Description" content="arvinall's poetry, prose and rhythmic prose collection">
+    <meta name="Keywords" content="ALL, arvin, arvinall, poetry, prose, rhythmic, prose, collection, web app">
     <style media="screen">
       @import "style/bootstrap.min.css";
       @import "style/main.css";
@@ -12,29 +14,48 @@
   <body>
 
     <div class="container">
-      <div class="jumbotron">
-        <h1><a href="//arvinall.github.com">ALL's Rhythmic Prose</a></h1>
+      <header class="jumbotron">
+        <h1><a href="#/home">ALL's Rhythmic Prose</a></h1>
         <p>arvinall's poetry, prose and rhythmic prose, collection</p>
-      </div>
+      </header>
     </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-sm-3" dir="rtl">
+      <section class="row">
+        <div class="col-sm-3" dir="rtl" ng-controller="main">
           <ul ng-repeat="detail in details">
-<!--        <li><a class="CPointer" ng-click="load(1)">find the bad ass</a></li>
-            <li><a class="CPointer" ng-click="load(2)">big head letter</a></li>-->
-            <li><dl><abbr title="{{detail.faName}}"><a class="CPointer" ng-click="load(detail.id)">{{detail.enName}}</a></abbr></dl></li>
+            <li><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li><!-- ng-click="load(detail.id)", href="#/note/{{detail.id}}" -->
           </ul>
         </div>
-        <div class="col-sm-7 faFont" id="res" dir="rtl"></div>
-      </div>
+        <div class="col-sm-7 faFont" dir="rtl" ng-view></div>
+      </section>
     </div>
 
-    <!--<a ng-click="load(1)">a big head letter</a>
-    <div id="res"></div>-->
+    <div class="row">
+      <footer class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <!-- social networks here -->
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 text-center inc">
+            <p>
+              writen by arvinall
+            </p>
+          </div>
+        </div>
+        <div class="text-center">
+          <small><a href="//github.com/arvinall/arvinall.github.io/">view source</a></small>
+        </div>
+      </footer>
+    </div>
 
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/markdown.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </body>

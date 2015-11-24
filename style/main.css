@@ -1,3 +1,7 @@
+body{
+  background: #eeeeee;
+  overflow-x: hidden;
+}
 @font-face {
     font-family: ANafis;
     src: url(font/anafis.ttf);
@@ -10,4 +14,23 @@
 }
 .wob{
   display: initial;
+}
+footer{
+  background: #0f0f0f;
+  padding-top: 6em;
+  padding-bottom: 6em;
+  margin-top:6em;
+}
+#res pre code{
+  margin-right: 5px;
+  font-size: 15px
+}#res pre{
+  padding-top:50px;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+footer small a{
+  color:gray;
+}.inc{
+  color:white
 }
