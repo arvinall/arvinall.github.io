@@ -35,7 +35,19 @@ body{
   background-image: url("../images/instagram.png");
 }div.telegramIcon{
   background-image: url("../images/telegram.png");
-}.sub-footer{
+}
+
+div.githubIcon64{
+  background-image: url("../images/64/github.png");
+}div.emailIcon64{
+  background-image: url("../images/64/email.png");
+}div.instagramIcon64{
+  background-image: url("../images/64/instagram.png");
+}div.telegramIcon64{
+  background-image: url("../images/64/telegram.png");
+}
+
+.sub-footer{
   margin-top:100px;
 }.sub-footer h4, .sub-footer h4 *{
   color: white;
@@ -92,14 +104,15 @@ body{
   cursor: pointer;
 }
 .mobile_nav div.social{
-  width: 128px;
+  width: 64px;
+  height:64px;
   margin-top:35px;
   float: left;
 }
 .mobile_nav_social{
-  width:512px;
-  margin: 0 auto;
-  height:185px;
+  width:260px;
+  margin: 35px auto;
+  height:115px;
 }
 .mobile_nav_notes_list ul{
   list-style: none;
@@ -109,8 +122,6 @@ body{
   font-size: 25px;
   color:cadetblue;
   padding: 25px;
-}.mobile_nav_notes_list ul li{
-  margin-top: 15px
 }.mobile_nav_by a{
   color:white;
   text-decoration: underline;
