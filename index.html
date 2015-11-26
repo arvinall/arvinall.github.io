@@ -76,7 +76,7 @@
         </div>
         <div class="mobile_nav_notes_list text-center" dir="rtl" ng-controller="list">
           <ul ng-repeat="detail in details">
-            <li><dl><abbr title="{{detail.faName}}"><a href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
+            <li><dl><abbr title="{{detail.faName}}"><a ng-click="ToggleTheNav()" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
           </ul>
         </div>
         <div class="mobile_nav_by text-center">
