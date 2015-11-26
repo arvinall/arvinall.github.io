@@ -2,8 +2,8 @@ body{
   background: #eeeeee;
   overflow-x: hidden;
 }@font-face {
-    font-family: ANafis;
-    src: url(font/anafis.ttf);
+    font-family: Mirza;
+    src: url("font/mirza.ttf");
 }.faFont{
   font-family: ANafis;
 }.CPointer{
