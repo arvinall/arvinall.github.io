@@ -142,12 +142,9 @@ div.githubIcon64{
   margin-top: 50px;
 }
 .homeLink{
-  padding-bottom: 15px;
-  margin-top: 0;
+  padding-top: 45px;
   text-align: center;
-}.homeLink a{
-  color: rgba(0,0,0,0);
-  text-shadow: 0px 60px 0px white;
+  color: white;
 }
 #res h1:first-child{
   display: none;
