@@ -1,6 +1,5 @@
-var title;
 angular.module("allrhythmicprose", ['ngRoute'])
-.controller('main', function($scope, $http) {
+.controller('list', function($scope, $http) {
 
   $http.get("js/details.json")
   .success(function(response) {
@@ -17,6 +16,12 @@ angular.module("allrhythmicprose", ['ngRoute'])
   .success(function(response) {
     document.getElementById("res").innerHTML = markdown.toHTML(response)
   })
+}).controller("mobileNav", function($scope){
+  $scope.MobileNavButtonVal = false
+  $scope.ToggleTheNav = function(){
+    if(!$scope.MobileNavButtonVal)$scope.MobileNavButtonVal = true
+    else $scope.MobileNavButtonVal = false
+  }
 })
 .config(function($routeProvider) {
   $routeProvider

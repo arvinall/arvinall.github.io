@@ -1,36 +1,120 @@
 body{
   background: #eeeeee;
   overflow-x: hidden;
-}
-@font-face {
+}@font-face {
     font-family: ANafis;
     src: url(font/anafis.ttf);
-}
-.faFont{
+}.faFont{
   font-family: ANafis;
-}
-.CPointer{
+}.CPointer{
   cursor: pointer;
-}
-.wob{
+}.wob{
   display: initial;
-}
-footer{
-  background: #0f0f0f;
-  padding-top: 6em;
-  padding-bottom: 6em;
+}footer{
   margin-top:6em;
-}
-#res pre code{
-  margin-right: 5px;
-  font-size: 15px
+  background: #0f0f0f;
+}#res pre code{
+  font-size: 15px;
 }#res pre{
+  text-align: center;
   padding-top:50px;
   padding-bottom: 50px;
   overflow: hidden;
-}
-footer small a{
+}footer small a{
   color:gray;
 }.inc{
   color:white
+}.social{
+  width:128px;
+  height:128px;
+}div.githubIcon{
+  background-image: url("../images/github.png");
+}div.emailIcon{
+  background-image: url("../images/email.png");
+}div.instagramIcon{
+  background-image: url("../images/instagram.png");
+}div.telegramIcon{
+  background-image: url("../images/telegram.png");
+}.sub-footer{
+  margin-top:100px;
+}.sub-footer h4, .sub-footer h4 *{
+  color: white;
+}
+@media (max-width: 768px){
+  .socialIcons{
+    display: none;
+  }
+  nav{ display: none;}
+  footer .sub-footer{
+     padding-top: 3em;
+     padding-bottom: 3em;
+  }
+  .mobile_nav{
+    background: #0f0f0f;
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    color: white;
+  }
+
+}
+@media (min-width: 768px){
+  .mobile_nav_button{
+    display: none;
+  }
+  footer{
+     padding-top: 6em;
+     padding-bottom: 6em;
+  }
+}
+.social{
+  transition: all 150ms ease;
+    -ms-transform: scale(0.75); /* IE 9 */
+  -webkit-transform: scale(0.75); /* Safari */
+   transform: scale(0.75);
+}.social:hover{
+  -ms-transform: scale(1); /* IE 9 */
+  -webkit-transform: scale(1); /* Safari */
+   transform: scale(1);
+}
+.mobile_nav_button{
+  position: absolute;
+  top:0;
+  right:15px;
+  cursor: pointer;
+}
+.mobile_nav_close_button{
+  position: absolute;
+  top:0;
+  right:25px;
+  cursor: pointer;
+}
+.mobile_nav div.social{
+  width: 128px;
+  margin-top:35px;
+  float: left;
+}
+.mobile_nav_social{
+  width:512px;
+  margin: 0 auto;
+  height:185px;
+}
+.mobile_nav_notes_list ul{
+  list-style: none;
+}.mobile_nav_notes_list ul abbr{
+  text-decoration : none;
+}.mobile_nav_notes_list a{
+  font-size: 25px;
+  color:cadetblue;
+  padding: 25px;
+}.mobile_nav_notes_list ul li{
+  margin-top: 15px
+}.mobile_nav_by a{
+  color:white;
+  text-decoration: underline;
+}.mobile_nav_by{
+  font-size: 20px;
+  margin-top: 50px;
 }
