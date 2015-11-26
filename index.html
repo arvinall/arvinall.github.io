@@ -15,7 +15,7 @@
 
     <div class="container">
       <header class="jumbotron">
-        <h1><a href="#/home">ALL's Rhythmic Prose</a></h1>
+        <h1><a title="home" href="#/home">ALL's Rhythmic Prose</a></h1>
         <p>arvinall's poetry, prose and rhythmic prose, collection</p>
       </header>
     </div>
@@ -23,11 +23,11 @@
 
     <div class="container">
       <div class="row">
-        <nav class="text-center col-sm-3" dir="rtl" ng-controller="list">
+        <nav class="text-center col-sm-3" ng-controller="list">
           <h3>Notes</h3>
           <hr>
-          <ul ng-repeat="detail in details">
-            <li><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
+          <ul>
+            <li ng-repeat="detail in details"><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
           </ul>
         </nav>
         <hr>

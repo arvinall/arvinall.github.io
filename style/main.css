@@ -1,6 +1,7 @@
 body{
   background: #eeeeee;
   overflow-x: hidden;
+  font-family: "Times New Roman", Times, serif;
 }@font-face {
     font-family: Mirza;
     src: url("font/mirza.ttf");
@@ -13,9 +14,16 @@ body{
 }nav ul{
   list-style: none;
   padding: 0;
+}nav ul li a{
+  font-size: 18px;
+  color: #0f9fc0;
+  font-weight: bold;
+}nav abbr{
+  text-decoration: none;
 }footer{
   margin-top:6em;
   background: #0f0f0f;
+  box-shadow: 0 -25px 10px #0f0f0f;
 }#res pre code{
   font-size: 15px;
 }#res pre{
@@ -23,6 +31,8 @@ body{
   padding-top:50px;
   padding-bottom: 50px;
   overflow: hidden;
+}#res p {
+  font-size: 18px;
 }footer small a{
   color:gray;
 }.inc{
