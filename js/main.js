@@ -13,6 +13,7 @@ angular.module("allrhythmicprose", ['ngRoute'])
     $scope.noteRes = document.getElementById("res").firstChild.innerHTML
     $scope.noteLink = window.location.href
     $scope.home = false
+    $scope.direction = $routeParams.direction
   })
 }).controller('loadHome', function($scope, $routeParams, $http) {
   $http.get("md/" + "home" + ".md")
@@ -29,7 +30,7 @@ angular.module("allrhythmicprose", ['ngRoute'])
 })
 .config(function($routeProvider) {
   $routeProvider
-   .when('/note/:NoteID', {
+   .when('/:direction/note/:NoteID/', {
     templateUrl: 'ShowNote.html',
     controller: 'loadNote'
   }).when('/home', {

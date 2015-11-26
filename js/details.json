@@ -2,74 +2,92 @@
   {
     "id" : 18,
     "faName" : "فضول‌یاب",
-    "enName" : "find the bad ass"
+    "enName" : "find the bad ass",
+    "direction" : "rtl"
   },{
     "id" : 17,
     "faName" : "نامه سرگشاده",
-    "enName" : "big head letter"
+    "enName" : "big head letter",
+    "direction" : "rtl"
   },{
     "id" : 16,
     "faName" : "چار چشمیا",
-    "enName" : "four eyes persons"
+    "enName" : "four eyes persons",
+    "direction" : "rtl"
   },{
     "id" : 15,
     "faName" : "جهان‌بینی",
-    "enName" : "world view"
+    "enName" : "world view",
+    "direction" : "rtl"
   },{
     "id" : 14,
     "faName" : "سکوت",
-    "enName" : "silent"
+    "enName" : "silent",
+    "direction" : "rtl"
   },{
     "id" : 13,
     "faName" : "عمارت غم",
-    "enName" : "mansion of Grief"
+    "enName" : "mansion of Grief",
+    "direction" : "rtl"
   },{
     "id" : 12,
     "faName" : "آنچه گویم",
-    "enName" : "that i say"
+    "enName" : "that i say",
+    "direction" : "rtl"
   },{
     "id" : 11,
     "faName" : "در پی من آمدی",
-    "enName" : "came to me"
+    "enName" : "came to me",
+    "direction" : "rtl"
   },{
     "id" : 10,
     "faName" : "چهارصد و بیست",
-    "enName" : "four hundred and twenty"
+    "enName" : "four hundred and twenty",
+    "direction" : "rtl"
   },{
     "id" : 9,
     "faName" : "دیگر نیست در این خانه جایی برای تو",
-    "enName" : "The house is not the place for you anymore"
+    "enName" : "The house is not the place for you anymore",
+    "direction" : "rtl"
   },{
     "id" : 8,
     "faName" : "نامه یک ... تازه‌کار",
-    "enName" : "letter of a newbie ..."
+    "enName" : "letter of a newbie ...",
+    "direction" : "rtl"
   },{
     "id" : 7,
     "faName" : "بالا کدوم طرفه !!؟",
-    "enName" : "where is the top !!?"
+    "enName" : "where is the top !!?",
+    "direction" : "rtl"
   },{
     "id" : 6,
     "faName" : "تله",
-    "enName" : "trap"
+    "enName" : "trap",
+    "direction" : "ltr"
   },{
     "id" : 5,
     "faName" : "لانه موش",
-    "enName" : "nest rat"
+    "enName" : "nest rat",
+    "direction" : "rtl"
   },{
     "id" : 4,
     "faName" : "شب",
-    "enName" : "night"
+    "enName" : "night",
+    "direction" : "rtl"
   },{
     "id" : 3,
     "faName" : "مغز من",
-    "enName" : "my mind"
+    "enName" : "my mind",
+    "direction" : "rtl"
   },{
     "id" : 2,
     "faName" : "دو، سه روز",
-    "enName" : "two, three days"
+    "enName" : "two, three days",
+    "direction" : "rtl"
   },{
     "id" : 1,
     "faName" : "بانگ طبل تهی",
-    "enName" : "sound of empty drum"
+    "enName" : "sound of empty drum",
+    "direction" : "rtl"
   }
 ]

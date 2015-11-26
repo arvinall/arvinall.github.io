@@ -27,11 +27,11 @@
           <h3>Notes</h3>
           <hr>
           <ul>
-            <li ng-repeat="detail in details"><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
+            <li ng-repeat="detail in details"><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/{{detail.direction}}/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
           </ul>
         </nav>
         <hr>
-        <section class="col-sm-7 faFont" dir="rtl" ng-view></section>
+        <section class="col-sm-7 faFont" ng-view></section>
       </div>
     </div>
 
@@ -80,7 +80,7 @@
         </div>
         <div class="mobile_nav_notes_list text-center" ng-controller="list">
           <ul ng-repeat="detail in details">
-            <li><dl><abbr title="{{detail.faName}}"><a ng-click="ToggleTheNav()" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
+            <li><dl><abbr title="{{detail.faName}}"><a ng-click="ToggleTheNav()" href="#/{{detail.direction}}/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
           </ul>
         </div>
         <div class="mobile_nav_by text-center">
