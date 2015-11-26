@@ -143,3 +143,6 @@ div.githubIcon64{
 #res h1:first-child{
   display: none;
 }
+hr{
+  height: 5px
+}

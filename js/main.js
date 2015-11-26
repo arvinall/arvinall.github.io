@@ -12,11 +12,13 @@ angular.module("allrhythmicprose", ['ngRoute'])
     document.getElementById("res").innerHTML = markdown.toHTML(response)
     $scope.noteRes = document.getElementById("res").firstChild.innerHTML
     $scope.noteLink = window.location.href
+    $scope.home = false
   })
 }).controller('loadHome', function($scope, $routeParams, $http) {
   $http.get("md/" + "home" + ".md")
   .success(function(response) {
     document.getElementById("res").innerHTML = markdown.toHTML(response)
+    $scope.home = true
   })
 }).controller("mobileNav", function($scope){
   $scope.MobileNavButtonVal = false
