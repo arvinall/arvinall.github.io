@@ -10,6 +10,8 @@ angular.module("allrhythmicprose", ['ngRoute'])
   $http.get("md/" + $routeParams.NoteID + ".md")
   .success(function(response) {
     document.getElementById("res").innerHTML = markdown.toHTML(response)
+    $scope.noteRes = document.getElementById("res").firstChild.innerHTML
+    $scope.noteLink = window.location.href
   })
 }).controller('loadHome', function($scope, $routeParams, $http) {
   $http.get("md/" + "home" + ".md")

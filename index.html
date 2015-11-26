@@ -23,11 +23,14 @@
 
     <div class="container">
       <div class="row">
-        <nav class="col-sm-3" dir="rtl" ng-controller="list">
+        <nav class="text-center col-sm-3" dir="rtl" ng-controller="list">
+          <h3>Notes</h3>
+          <hr>
           <ul ng-repeat="detail in details">
             <li><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
           </ul>
         </nav>
+        <hr>
         <section class="col-sm-7 faFont" dir="rtl" ng-view></section>
       </div>
     </div>
@@ -68,6 +71,7 @@
       <!-- nav-bar on phone -->
       <div ng-show="MobileNavButtonVal" class="mobile_nav">
         <h1 ng-click="ToggleTheNav()" class="mobile_nav_close_button">&times;</h1>
+        <h1 class="homeLink"><a href="#/home" title="home">ALL's Rhythmic Prose</a></h1>
         <div class="mobile_nav_social">
           <a href="https://github.com/arvinall/"><div class="social githubIcon64"></div></a>
           <a href="mailto:arvinall021@gmail.com"><div class="social emailIcon64"></div></a>
