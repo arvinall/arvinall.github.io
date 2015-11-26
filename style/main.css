@@ -128,9 +128,11 @@ div.githubIcon64{
 }
 .mobile_nav_notes_list ul{
   list-style: none;
+  padding: 0;
 }.mobile_nav_notes_list ul abbr{
   text-decoration : none;
 }.mobile_nav_notes_list a{
+  text-decoration : none;
   font-size: 25px;
   color:cadetblue;
   padding: 25px;
