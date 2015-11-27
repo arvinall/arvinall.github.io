@@ -23,7 +23,8 @@ body{
 }footer{
   margin-top:6em;
   background: #0f0f0f;
-  box-shadow: 0 -25px 10px #0f0f0f;
+}footer.row .row{
+  margin: 0;
 }#res pre code{
   font-size: 15px;
 }#res pre{
@@ -66,14 +67,15 @@ div.githubIcon64{
   color: white;
 }
 @media (max-width: 768px){
-  .socialIcons{
+  /*.socialIcons{
     display: none;
-  }
+  }*/
   nav{ display: none;}
-  footer .sub-footer{
+  /*footer .sub-footer{
      padding-top: 3em;
      padding-bottom: 3em;
-  }
+  }*/
+  footer{display: none;}
 
 }
 @media (min-width: 992px) {
