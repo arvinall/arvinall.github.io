@@ -32,8 +32,10 @@ body{
   padding-top:50px;
   padding-bottom: 50px;
   overflow: hidden;
-}#res p, #res h2 {
+}#res p{
   font-size: 18px;
+}#res h2 {
+  font-size: 30px;
 }footer small a{
   color:gray;
 }.inc{
@@ -67,16 +69,9 @@ div.githubIcon64{
   color: white;
 }
 @media (max-width: 768px){
-  /*.socialIcons{
-    display: none;
-  }*/
-  nav{ display: none;}
-  /*footer .sub-footer{
-     padding-top: 3em;
-     padding-bottom: 3em;
-  }*/
+  nav{display: none;}
   footer{display: none;}
-
+  #res h2 {font-size: 22px;}
 }
 @media (min-width: 992px) {
   .mobile_nav_button{
