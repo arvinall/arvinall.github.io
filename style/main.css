@@ -151,3 +151,10 @@ div.githubIcon64{
 hr{
   height: 5px
 }
+.FaClassic h2:nth-child(odd):before{
+  content: "- ";
+  margin-right: 20px;
+}.FaClassic h2:nth-child(odd){
+  margin-right: 55px;
+  margin-bottom: 45px;
+}
