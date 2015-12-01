@@ -1,5 +1,10 @@
 [
   {
+    "id" : 19,
+    "faName" : "یک دیدگاه",
+    "enName" : "a kind of viewpoint",
+    "direction" : "FaClassic"
+  },{
     "id" : 18,
     "faName" : "فضول‌یاب",
     "enName" : "find the bad ass",
