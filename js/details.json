@@ -1,5 +1,10 @@
 [
   {
+    "id" : 20,
+    "faName" : "میزنم حرف",
+    "enName" : "i talk",
+    "direction" : "FaClassic"
+  },{
     "id" : 19,
     "faName" : "یک دیدگاه",
     "enName" : "a kind of viewpoint",
