@@ -1,5 +1,10 @@
 [
   {
+    "id" : 22,
+    "faName" : "نظریه آنها!",
+    "enName" : "they theory",
+    "direction" : "FaClassic"
+  },{
     "id" : 21,
     "faName" : "در جمعی ز دگران بودم",
     "enName" : "in a group of others",
