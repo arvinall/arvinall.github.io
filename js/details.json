@@ -1,5 +1,10 @@
 [
   {
+    "id" : 23,
+    "faName" : "ای مویز",
+    "enName" : "currant",
+    "direction" : "FaClassic"
+  },{
     "id" : 22,
     "faName" : "نظریه آنها!",
     "enName" : "they theory",
