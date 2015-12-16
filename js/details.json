@@ -1,5 +1,10 @@
 [
   {
+    "id" : 25,
+    "faName" : "این کجا و آن کجا",
+    "enName" : "compare",
+    "direction" : "FaClassic"
+  },{
     "id" : 24,
     "faName" : "تا به آنجا برسم آرامشی آید پدید",
     "enName" : "when i arrived to there visible peace",
