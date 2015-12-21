@@ -1,5 +1,10 @@
 [
   {
+    "id" : 26,
+    "faName" : "تلخ و شیرین",
+    "enName" : "bitter and sugary",
+    "direction" : "FaClassic"
+  },{
     "id" : 25,
     "faName" : "این کجا و آن کجا",
     "enName" : "compare",
