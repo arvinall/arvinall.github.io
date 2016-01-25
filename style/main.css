@@ -43,6 +43,11 @@ body{
 }.social{
   width:128px;
   height:128px;
+  margin: auto;
+  transition: all 150ms ease;
+  -ms-transform: scale(0.75); /* IE 9 */
+  -webkit-transform: scale(0.75); /* Safari */
+  transform: scale(0.75);
 }div.githubIcon{
   background-image: url("../images/github.png");
 }div.emailIcon{
@@ -73,6 +78,13 @@ div.githubIcon64{
   footer{display: none;}
   #res h2 {font-size: 22px;}
 }
+@media (max-width: 992px){
+  footer{display: none;}
+  nav ul li {display: none;}
+  nav h3{visibility: hidden;}
+  #res h2 {font-size: 22px;}
+  article#res{padding-bottom: 65px;}
+}
 @media (min-width: 992px) {
   .mobile_nav_button{
     display: none;
@@ -81,12 +93,6 @@ div.githubIcon64{
      padding-top: 6em;
      padding-bottom: 6em;
   }
-}
-.social{
-  transition: all 150ms ease;
-    -ms-transform: scale(0.75); /* IE 9 */
-  -webkit-transform: scale(0.75); /* Safari */
-   transform: scale(0.75);
 }.social:hover{
   -ms-transform: scale(1); /* IE 9 */
   -webkit-transform: scale(1); /* Safari */
