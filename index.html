@@ -1,104 +1,23 @@
-<!DOCTYPE html>
-<html ng-app="allrhythmicprose">
+<!doctype html>
+<html lang="en" ng-app="arp">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ALL's Rhythmic Prose</title>
     <meta name="Description" content="arvinall's poetry, prose and rhythmic prose collection">
-    <meta name="Keywords" content="ALL, arvin, arvinall, poetry, prose, rhythmic, prose, collection, web app">
-    <style media="screen">
-      @import "style/bootstrap.min.css";
-      @import "style/main.css";
-    </style>
+    <meta name="theme-color" content="#336699">
+    <meta name="msapplication-navbutton-color" content="#336699">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#336699">
+    <link rel="stylesheet" href="./assets/bower_components/font-awesome/css/font-awesome.min.css" charset="utf-8" type="text/css">
+    <link href="./assets/css/app.css" rel="stylesheet" type="text/css" charset="utf-8">
   </head>
   <body>
 
-    <div class="container">
-      <header class="jumbotron">
-        <h1><a title="home" href="#/home">ALL's Rhythmic Prose</a></h1>
-        <p>arvinall's poetry, prose and rhythmic prose, collection</p>
-      </header>
-    </div>
+    <ui-view><div class="loading"></div></ui-view>
 
-
-    <div class="container">
-      <div class="row">
-        <nav class="text-center col-sm-3" ng-controller="list">
-          <h3>Notes</h3>
-          <hr>
-          <ul>
-            <li ng-repeat="detail in details"><dl><abbr title="{{detail.faName}}"><a class="CPointer" href="#/{{detail.direction}}/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
-          </ul>
-        </nav>
-        <hr>
-        <section class="col-sm-7 faFont" ng-view></section>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <footer class="row">
-        <div class="socialIcons">
-          <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2">
-              <a href="https://github.com/arvinall/" target="_blank"><div class="social githubIcon"></div></a>
-            </div>
-            <div class="col-sm-2">
-              <a href="mailto:arvinall021@gmail.com"><div class="social emailIcon"></div></a>
-            </div>
-            <div class="col-sm-2">
-              <a href="https://instagram.com/arvinall/" target="_blank"><div class="social instagramIcon"></div></a>
-            </div>
-            <div class="col-sm-2">
-              <a href="https://telegram.me/arvinall" target="_blank"><div class="social telegramIcon"></div></a>
-            </div>
-            <div class="col-sm-2"></div>
-          </div>
-        </div>
-
-        <div class="text-center sub-footer faFont">
-
-          <h4 dir="rtl">
-            هرگونه برداشت تصویری، صوتی و موسیقیایی از این مجموعه بدون اجازه کتبی مولف ممنوع است.
-            <br><small>بازنشر به همراه درج منبع بلا مانع است.</small><br>
-            <small><a href="https://github.com/arvinall/arvinall.github.io/" title="app source" target="_blank">view source</a></small></h4>
-        </div>
-      </footer>
-    </div>
-
-    <div ng-controller="mobileNav">
-      <h1 ng-click="ToggleTheNav()" class="mobile_nav_button">&#9776;</h1>
-      <!-- nav-bar on phone -->
-      <div ng-show="MobileNavButtonVal" class="mobile_nav">
-        <h1 ng-click="ToggleTheNav()" class="mobile_nav_close_button">&times;</h1>
-        <h1 class="homeLink">ALL's Rhythmic Prose</h1>
-        <div class="mobile_nav_social">
-          <a href="https://github.com/arvinall/" target="_blank"><div class="social githubIcon64"></div></a>
-          <a href="mailto:arvinall021@gmail.com"><div class="social emailIcon64"></div></a>
-          <a href="https://instagram.com/arvinall/" target="_blank"><div class="social instagramIcon64"></div></a>
-          <a href="https://telegram.me/arvinall" target="_blank"><div class="social telegramIcon64"></div></a>
-        </div>
-        <div class="mobile_nav_notes_list text-center" ng-controller="list">
-          <ul>
-            <li ng-repeat="detail in details"><dl><abbr title="{{detail.faName}}"><a ng-click="ToggleTheNav()" href="#/{{detail.direction}}/note/{{detail.id}}">{{detail.enName}}</a></abbr></dl></li>
-          </ul>
-        </div>
-        <div class="mobile_nav_by text-center">
-          <p>written by <a href="mailto:arvinall021@gmail.com">arvinall</a>.</p>
-        </div>
-        <div class="text-center sub-footer faFont">
-
-          <h4 dir="rtl">
-            هرگونه برداشت تصویری، صوتی و موسیقیایی از این مجموعه بدون اجازه کتبی مولف ممنوع است.
-            <br><small>بازنشر به همراه درج منبع بلا مانع است.</small><br>
-            <small><a href="https://github.com/arvinall/arvinall.github.io/" title="app source" target="_blank">view source</a></small></h4>
-        </div>
-      </div>
-    </div>
-
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/angular-route.min.js"></script>
-    <script type="text/javascript" src="js/markdown.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script src="./assets/js/foundation.js"></script>
+    <script src="./assets/js/templates.js"></script>
+    <script src="./assets/js/routes.js"></script>
+    <script src="./assets/js/app.js"></script>
   </body>
 </html>
