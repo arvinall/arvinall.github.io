@@ -1,0 +1,178 @@
+[
+  {
+    "id" : 35,
+    "faName" : "من !",
+    "enName" : "Me !",
+    "direction" : "rtl"
+  },{
+    "id" : 34,
+    "faName" : "پا بوسه",
+    "enName" : "Valet",
+    "direction" : "rtl"
+  },{
+    "id" : 33,
+    "faName" : "معابر",
+    "enName" : "passageway",
+    "direction" : "rtl"
+  },{
+    "id" : 32,
+    "faName" : "اشتباه خوب",
+    "enName" : "Well mistake",
+    "direction" : "rtl"
+  },{
+    "id" : 31,
+    "faName" : "حکم",
+    "enName" : "Verdict",
+    "direction" : "rtl"
+  },{
+    "id" : 30,
+    "faName" : "بازدم",
+    "enName" : "expiration",
+    "direction" : "rtl"
+  },{
+    "id" : 29,
+    "faName" : "Somebody want help me",
+    "enName" : "Somebody want help me",
+    "direction" : "ltr"
+  },{
+    "id" : 28,
+    "faName" : "بینوایان",
+    "enName" : "les miserables",
+    "direction" : "rtl"
+  },{
+    "id" : 27,
+    "faName" : "دو راهی",
+    "enName" : "two ways",
+    "direction" : "FaClassic"
+  },{
+    "id" : 26,
+    "faName" : "تلخ و شیرین",
+    "enName" : "bitter and sugary",
+    "direction" : "FaClassic"
+  },{
+    "id" : 25,
+    "faName" : "این کجا و آن کجا",
+    "enName" : "compare",
+    "direction" : "FaClassic"
+  },{
+    "id" : 24,
+    "faName" : "تا به آنجا برسم آرامشی آید پدید",
+    "enName" : "when i arrived to there visible peace",
+    "direction" : "rtl"
+  },{
+    "id" : 23,
+    "faName" : "ای مویز",
+    "enName" : "currant",
+    "direction" : "FaClassic"
+  },{
+    "id" : 22,
+    "faName" : "نظریه آنها!",
+    "enName" : "they theory",
+    "direction" : "FaClassic"
+  },{
+    "id" : 21,
+    "faName" : "در جمعی ز دگران بودم",
+    "enName" : "in a group of others",
+    "direction" : "rtl"
+  },{
+    "id" : 20,
+    "faName" : "میزنم حرف",
+    "enName" : "i talk",
+    "direction" : "FaClassic"
+  },{
+    "id" : 19,
+    "faName" : "یک دیدگاه",
+    "enName" : "a kind of viewpoint",
+    "direction" : "FaClassic"
+  },{
+    "id" : 18,
+    "faName" : "فضول‌یاب",
+    "enName" : "find the bad ass",
+    "direction" : "rtl"
+  },{
+    "id" : 17,
+    "faName" : "نامه سرگشاده",
+    "enName" : "big head letter",
+    "direction" : "rtl"
+  },{
+    "id" : 16,
+    "faName" : "چار چشمیا",
+    "enName" : "four eyes persons",
+    "direction" : "rtl"
+  },{
+    "id" : 15,
+    "faName" : "جهان‌بینی",
+    "enName" : "world view",
+    "direction" : "rtl"
+  },{
+    "id" : 14,
+    "faName" : "سکوت",
+    "enName" : "silent",
+    "direction" : "rtl"
+  },{
+    "id" : 13,
+    "faName" : "عمارت غم",
+    "enName" : "mansion of Grief",
+    "direction" : "rtl"
+  },{
+    "id" : 12,
+    "faName" : "آنچه گویم",
+    "enName" : "that i say",
+    "direction" : "rtl"
+  },{
+    "id" : 11,
+    "faName" : "در پی من آمدی",
+    "enName" : "came to me",
+    "direction" : "rtl"
+  },{
+    "id" : 10,
+    "faName" : "چهارصد و بیست",
+    "enName" : "four hundred and twenty",
+    "direction" : "rtl"
+  },{
+    "id" : 9,
+    "faName" : "دیگر نیست در این خانه جایی برای تو",
+    "enName" : "The house is not the place for you anymore",
+    "direction" : "rtl"
+  },{
+    "id" : 8,
+    "faName" : "نامه یک ... تازه‌کار",
+    "enName" : "letter of a newbie ...",
+    "direction" : "rtl"
+  },{
+    "id" : 7,
+    "faName" : "بالا کدوم طرفه !!؟",
+    "enName" : "where is the top !!?",
+    "direction" : "rtl"
+  },{
+    "id" : 6,
+    "faName" : "تله",
+    "enName" : "trap",
+    "direction" : "ltr"
+  },{
+    "id" : 5,
+    "faName" : "لانه موش",
+    "enName" : "nest rat",
+    "direction" : "rtl"
+  },{
+    "id" : 4,
+    "faName" : "شب",
+    "enName" : "night",
+    "direction" : "rtl"
+  },{
+    "id" : 3,
+    "faName" : "مغز من",
+    "enName" : "my mind",
+    "direction" : "rtl"
+  },{
+    "id" : 2,
+    "faName" : "دو، سه روز",
+    "enName" : "two, three days",
+    "direction" : "rtl"
+  },{
+    "id" : 1,
+    "faName" : "بانگ طبل تهی",
+    "enName" : "sound of empty drum",
+    "direction" : "rtl"
+  }
+]
