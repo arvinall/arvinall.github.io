@@ -1,5 +1,10 @@
 [
   {
+    "id" : 36,
+    "faName" : "پدر، پسر، روح القدس",
+    "enName" : "trinity",
+    "direction" : "rtl"
+  },{
     "id" : 35,
     "faName" : "من !",
     "enName" : "Me !",
