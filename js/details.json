@@ -1,5 +1,15 @@
 [
   {
+    "id" : 38,
+    "faName" : "عریضه",
+    "enName" : "Petition",
+    "direction" : "rtl"
+  },{
+    "id" : 37,
+    "faName" : "یک صد سده",
+    "enName" : "One hundred centuries",
+    "direction" : "rtl"
+  },{
     "id" : 36,
     "faName" : "پدر، پسر، روح القدس",
     "enName" : "trinity",
