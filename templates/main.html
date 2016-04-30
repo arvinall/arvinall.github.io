@@ -1,0 +1,78 @@
+
+<header class="grid-block">
+  <div class="grid-container main">
+    <div class="appIcon">
+      <a ui-sref="main({id: ''})"><img src="icon.png" alt="" /></a>
+    </div>
+    <div class="appDes">
+      <h1><a ui-sref="main({id: ''})">ALL's Rhythmic Prose</a></h1>
+      <h2><small>arvinall's poetry, prose and rhythmic prose, collection</small></h2>
+    </div>
+  </div>
+</header>
+
+<footer class="small-12">
+  <div class="socialShow small-12">
+    <button type="button" ng-click="socialToggle()" ng-class="social">Social !</button>
+  </div>
+  <div class="social small-12 grid-block large-up-4 medium-up-2 small-up-1" ng-class="social">
+    <div class="grid-block socialIcon">
+      <a href="mailto:arvinall021@gmail.com" class="small-12" target="_blank">
+        <div class="SI small-12">
+          <span class="fa fa-envelope"></span>
+          <span class="socialLabel">Email</span>
+        </div>
+      </a>
+    </div>
+    <div class="grid-block socialIcon">
+      <a href="https://instagram.com/arvinall/" class="small-12" target="_blank">
+        <div class="SI small-12">
+        <span class="fa fa-instagram"></span>
+        <span class="socialLabel">Instagram</span>
+        </div>
+      </a>
+    </div>
+    <div class="grid-block socialIcon">
+      <a href="https://telegram.me/arvinall" class="small-12" target="_blank">
+        <div class="SI small-12">
+        <span class="fa fa-paper-plane"></span>
+        <span class="socialLabel">Telegram</span>
+        </div>
+      </a>
+    </div>
+    <div class="grid-block socialIcon">
+      <a href="https://github.com/arvinall/" class="small-12" target="_blank">
+        <div class="SI small-12">
+        <span class="fa fa-github-alt"></span>
+        <span class="socialLabel">Git Repo</span>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="copyright small-12" ng-class="copyright" ng-mouseenter="copyright='active'" ng-mouseleave="copyright=''">
+    <h2>هرگونه برداشت تصویری، صوتی و موسیقیایی از این مجموعه بدون اجازه کتبی مولف ممنوع است.</h2>
+    <h3><small>بازنشر به همراه درج منبع بلا مانع است.</small></h3>
+    <small><a href="https://github.com/arvinall/arvinall.github.io/" title="app source" target="_blank">view source</a></small>
+  </div>
+</footer>
+
+<div class="loading main" ng-hide="listLoaded"></div>
+
+<nav class="list grid-block small-12 large-up-3 medium-up-2 small-up-1" ng-hide="pageType" ng-class="listLoad">
+  <div ng-repeat="detail in details" class="grid-block listItem" zf-open="poet" ui-sref="main({id: detail.id})">
+    <div class="poet small-12">
+      <a title="{{detail.faName}}">
+        {{detail.enName}}
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section id="poet" ng-show="pageType" class="small-12" ng-class="poetLoaded">
+  <div ng-hide="poetLoad" class="loading"></div>
+  <div class="grid-container {{ structure }}" ng-bind-html="poet">
+  </div>
+  <div class="back" ng-show="poetLoad" ui-sref="main({id: ''})">
+    <span class="fa fa-arrow-left"></span>
+  </div>
+</section>

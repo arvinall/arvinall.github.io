@@ -1,5 +1,50 @@
 [
   {
+    "id" : 38,
+    "faName" : "عریضه",
+    "enName" : "Petition",
+    "direction" : "rtl"
+  },{
+    "id" : 37,
+    "faName" : "یک صد سده",
+    "enName" : "One hundred centuries",
+    "direction" : "rtl"
+  },{
+    "id" : 36,
+    "faName" : "پدر، پسر، روح القدس",
+    "enName" : "trinity",
+    "direction" : "rtl"
+  },{
+    "id" : 35,
+    "faName" : "من !",
+    "enName" : "Me !",
+    "direction" : "rtl"
+  },{
+    "id" : 34,
+    "faName" : "پا بوسه",
+    "enName" : "Valet",
+    "direction" : "rtl"
+  },{
+    "id" : 33,
+    "faName" : "معابر",
+    "enName" : "passageway",
+    "direction" : "rtl"
+  },{
+    "id" : 32,
+    "faName" : "اشتباه خوب",
+    "enName" : "Well mistake",
+    "direction" : "rtl"
+  },{
+    "id" : 31,
+    "faName" : "حکم",
+    "enName" : "Verdict",
+    "direction" : "rtl"
+  },{
+    "id" : 30,
+    "faName" : "بازدم",
+    "enName" : "expiration",
+    "direction" : "rtl"
+  },{
     "id" : 29,
     "faName" : "Somebody want help me",
     "enName" : "Somebody want help me",
