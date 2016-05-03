@@ -1,8 +1,13 @@
 [
   {
-    "id" : 39,
+    "id" : 40,
     "faName" : "مرحله بعد",
     "enName" : "next level",
+    "direction" : "rtl"
+  },{
+    "id" : 39,
+    "faName" : "مظهر",
+    "enName" : "Symbol",
     "direction" : "rtl"
   },{
     "id" : 38,
