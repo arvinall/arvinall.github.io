@@ -67,18 +67,18 @@
 
     // handle addEventListener
     this.addEventListener = function addEventListener(operator, event, handler) {
-      var eventHandler, operatorHandler, handlerChecker, err = ' argument as operator must be ';
+      var eventHandler, operatorHandler, handlerChecker;
 
       if (typeof operator !== 'string') {
-        throw Error('Type of first' + err + 'string')
+        throw Error('Type of first argument as operator must be string')
       }
 
       if (typeof event !== 'string') {
-        throw Error('Type of second' + err + 'string')
+        throw Error('Type of second argument as event must be string')
       }
 
       if (typeof handler !== 'function') {
-        throw Error('Type of last' + err + 'function')
+        throw Error('Type of last argument as handler must be function')
       }
 
       // make access to the operator
