@@ -111,8 +111,11 @@ gulp.task('scripts', () =>
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
       './app/scripts/init.js',
-      './app/scripts/director.min.js',
-      './app/scripts/main.js'
+      './app/scripts/main.js',
+      './app/scripts/pathparser.min.js',
+      './app/scripts/route.js',
+      './app/scripts/navigation.js',
+      './app/scripts/jquery.min.js'
       // Other scripts
     ])
       .pipe($.newer('.tmp/scripts'))

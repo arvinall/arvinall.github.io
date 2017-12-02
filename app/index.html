@@ -41,13 +41,46 @@
   </head>
   <body>
 
+  <div class="Loader Loader--open">
+    <div class="Loader__frame Loader__frame--outer"></div>
+    <div class="Loader__frame Loader__frame--inner"></div>
+  </div>
+
+  <header class="Intro">
+    <div class="Intro__welcoming">
+      <span class="Intro__sentence">به صفحه برخط</span>
+      <h1 class="Intro__sentence">آروین لادن</h1>
+      <span class="Intro__sentence">خوش آمدید</span>
+    </div>
+  </header>
+
+  <main class="Board">
+    <nav class="Navigation">
+      <ul class="Navigation__frame">
+        <li class="Navigation__item Navigation__item--empty">.</li>
+        <li class="Navigation__item Navigation__item--empty">.</li>
+
+        <li class="Navigation__item">نگاره ها</li>
+        <li class="Navigation__item">نبشته ها</li>
+        <li class="Navigation__item">آوا ها</li>
+        <li class="Navigation__item">کتابخانه</li>
+        <li class="Navigation__item">طراحی ها</li>
+
+        <li class="Navigation__item Navigation__item--empty">.</li>
+        <li class="Navigation__item Navigation__item--empty">.</li>
+      </ul>
+    </nav>
+  </main>
+
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/init.js"></script>
-    <script src="scripts/director.min.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/pathparser.min.js"></script>
+    <script src="scripts/route.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/jquery.min.js"></script>
     <!-- endbuild -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       function GetGoogleAnalytics (i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -57,6 +90,5 @@
       // ga('create', 'UA-XXXXX-X', 'auto')
       // ga('send', 'pageview')
     </script>
-    <!-- Built with love using Web Starter Kit -->
   </body>
 </html>

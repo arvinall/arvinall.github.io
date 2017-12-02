@@ -18,9 +18,162 @@
 Note: any .css or .scss files included in the 'styles' directory
 will be correctly compiled during `gulp serve` and `gulp`
  */
+@import url('http://cdn.font-store.ir/yekan.css');
 
 html, body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'yekan', 'Helvetica', sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+@keyframes loader {
+  from {
+    transform: translate(-50%, -50%) scale(.9);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.Loader {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: white;
+  display: none;
+  &.Loader--open {
+    display: block;
+  }
+  &.Loader--leave {
+    transition: transform .5s linear;
+    transform: scale(0);
+    .Loader__frame--inner {
+      animation-name: none;
+    }
+  }
+  &__frame {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &--outer {
+      background: black;
+      box-shadow: 0 0 .5em black;
+    }
+    &--inner {
+      background: white;
+      width: 4.5em;
+      height: 4.5em;
+      animation-name: loader;
+      animation-duration: .5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
+
+.Intro {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  transform: scale(1);
+  &__welcoming {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    &.Intro__welcoming--start {
+      .Intro__sentence {
+        &:before {
+          transform: translateX(-100%);
+        }
+        &:nth-child(2):before {
+          transition-delay: 1s;
+        }
+        &:nth-child(3):before {
+          transition-delay: 2s;
+        }
+      }
+    }
+  }
+  &__sentence {
+    display: block;
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    position: relative;
+    &:before {
+      content: '';
+      display: block;
+      transform: translateX(0);
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: white;
+      transition: transform 1s linear;
+    }
+  }
+  &--leave {
+    transition: transform .5s linear;
+    transform: scale(.5);
+  }
+}
+
+h1 {
+  font-size: 4em !important;
+}
+
+.Board {
+  height: 100vh;
+  width: 100%;
+  transition: background .5s linear;
+  background: rgba(255, 255, 255, 0);
+  overflow: hidden;
+  &.Board--show {
+    background: rgba(255, 255, 255, 1);
+  }
+}
+
+.Navigation {
+  height: 100vh;
+  width: 100%;
+  transition: transform .75s linear;
+  transform: translate(150%, 150%);
+
+  &.Navigation--show {
+    transform: translate(0, 0);
+  }
+  &__frame {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    transform: rotate(-22.5deg) translateY(-15%) translateX(-25%);
+    width: 200%;
+    height: 115%;
+    transform-origin: center;
+  }
+  &__item {
+    font-size: 1.5em;
+    padding: 1em;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, .25);
+    &:last-child {
+      border-bottom: 1px solid rgba(0, 0, 0, .25);
+    }
+    &--empty {
+      color: white;
+    }
+  }
 }

@@ -1,4 +1,5 @@
 /* eslint-disable */
+
 // Service worker
 (function() {
   'use strict';
@@ -67,7 +68,7 @@
 
     // handle addEventListener
     this.addEventListener = function addEventListener(operator, event, handler) {
-      var eventHandler, operatorHandler, handlerChecker;
+      var eventHandler, operatorHandler;
 
       if (typeof operator !== 'string') {
         throw Error('Type of first argument as operator must be string')
@@ -92,7 +93,7 @@
       eventHandler = operatorHandler[event] = (
         typeof operatorHandler[event] === 'object'
       ) ?
-        this.eventHandlers[event] :
+        operatorHandler[event] :
         [];
 
       eventHandler.push(handler);
