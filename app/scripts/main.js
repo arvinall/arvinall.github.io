@@ -40,4 +40,15 @@ Enviroment.addEventListener('DOM', 'Complete', function Main () {
       self.route.engine()
     }, 500)
   }
+
+  // cache device display height
+  Enviroment.temp.displayHeight = (function () {
+    var h = $(window).height.bind($(window))
+
+    $(window).resize(function () {
+      Enviroment.temp.displayHeight = h()
+    })
+
+    return h()
+  })()
 })

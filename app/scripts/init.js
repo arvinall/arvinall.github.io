@@ -65,6 +65,7 @@
     this['eventHandlers'] = Object.create(null);
     this['addEventListener'] = function() {};
     this['fireEvent'] = function() {};
+    this['temp'] = Object.create(null);
 
     // handle addEventListener
     this.addEventListener = function addEventListener(operator, event, handler) {
