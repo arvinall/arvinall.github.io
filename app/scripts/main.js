@@ -50,5 +50,19 @@ Enviroment.addEventListener('DOM', 'Complete', function Main () {
     })
 
     return h()
-  })()
+  })();
+
+  // Back button action
+  (function BackButton () {
+    var btn = $('.Arrow')
+
+    btn.on('click', function () {
+      location.hash = self.route.prevUrl
+    })
+  })();
+
+  Enviroment.route.notFound = function notFound () {
+    this.route.controller = 'notFound'
+    this.route.setPrevUrl('')
+  }
 })

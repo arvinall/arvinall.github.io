@@ -3,12 +3,12 @@
 
 
 (function () {
-  var navigation_Element, navigationFrame_Element, navigationItem_Element, emptyItem_Element, navigationFrameWithSpace_Element
+  var navigation_Element, navigationFrame_Element, navigationItem_Element, emptyItem_Element, navigationItemWithSpace_Element, background_Element
 
-  Enviroment.temp.navigationCentering = false
+  Enviroment.temp.navigationSizing = false
 
   Enviroment.addEventListener('DOM', 'Complete', function NavigationElementFetching () {
-    var handler, handlerParams = Object.create(null)
+    var handler, handlerParams = Object.create(null), scrollPos = 0
 
     navigation_Element = $('.Navigation')
     navigationFrame_Element = $('.Navigation__frame')
@@ -21,17 +21,17 @@
 
       return result
     }
+    background_Element = $('.Background')
 
     handler = function () {
-      var D = handlerParams
-
-      // D for cache data
-      if (typeof D !== 'object') D = Object.create(null);
+      var D = handlerParams;
 
       // Get blank spaces count for fix
       (function makeBaseNav () {
         var tmp, itemH = navigationItem_Element.outerHeight(),
           loopCheck, FRG = document.createDocumentFragment()
+
+        Enviroment.temp.navigationSizing = true
 
         if (navigationFrame_Element.outerHeight() > (itemH * navigationItem_Element.length)) {
           tmp = navigationFrame_Element.outerHeight() - (itemH * navigationItem_Element.length)
@@ -56,8 +56,10 @@
 
         if (typeof D.centerize === 'function') D.centerize()
 
-        navigationFrameWithSpace_Element = $('.Navigation__item')
-      })();
+        navigationItemWithSpace_Element = $('.Navigation__item')
+
+        Enviroment.temp.navigationSizing = false
+      })()
     };
 
     handlerParams.cleaner = function cleaner () {
@@ -65,8 +67,6 @@
       navigationFrame_Element.append(navigationItem_Element)
     }
     handlerParams.centerize = function centerize () {
-      Enviroment.temp.navigationCentering = true
-
       // Set scroll on center
       var position = (function () {
         var r, itemsHeight = navigationItem_Element.outerHeight() * navigationItem_Element.length
@@ -83,8 +83,6 @@
       })()
 
       navigationFrame_Element.scrollTop(position)
-
-      Enviroment.temp.navigationCentering = false
     }
 
     $(window).resize(handler)
@@ -93,25 +91,42 @@
 
     // Movement effect
     navigationFrame_Element.on('scroll', function () {
+      var source
 
-      if (Enviroment.temp.navigationCentering) return false
+      if (Enviroment.temp.navigationSizing) return false
 
       if (this.scrollTop < navigationItem_Element.outerHeight()) {
-        navigationFrame_Element.prepend(navigationFrameWithSpace_Element.clone())
+        navigationFrame_Element.prepend(navigationItemWithSpace_Element.clone())
       } else if (this.scrollTop + navigationFrame_Element.outerHeight() > navigationFrame_Element[0].scrollHeight - navigationItem_Element.outerHeight()) {
-        navigationFrame_Element.append(navigationFrameWithSpace_Element.clone())
+        navigationFrame_Element.append(navigationItemWithSpace_Element.clone())
       }
+
+      // Change background base on scroll
+      if (background_Element.hasClass('Background--show')) {
+        if (scrollPos > navigationFrame_Element.scrollTop()) {
+          background_Element.removeClass('Background--reverse')
+        } else if (scrollPos < navigationFrame_Element.scrollTop()) {
+          background_Element.addClass('Background--reverse')
+        }
+      }
+
+      // Cache scroll position
+      scrollPos = navigationFrame_Element.scrollTop()
     })
   })
 
   // Navigation controller
   Enviroment.route.parser.add('', function Navigation () {
+    Enviroment.route.controller = 'navigation'
     // enter
-    navigation_Element.addClass('Navigation--show')
+    if (!navigation_Element.hasClass('Navigation--show'))
+      navigation_Element.addClass('Navigation--show')
+    if (!background_Element.hasClass('Background--show'))
+    background_Element.addClass('Background--show')
   })
 
   // Before quit
   Enviroment.addEventListener('Route', 'Change', function NavigationQuit (R) {
-    navigation_Element.removeClass('Navigation--show')
+    // console.log(this.route.controllerCache)
   })
 })()
