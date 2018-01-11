@@ -115,6 +115,7 @@ gulp.task('scripts', () =>
       './app/scripts/pathparser.min.js',
       './app/scripts/route.js',
       './app/scripts/navigation.js',
+      './app/scripts/activities.js',
       './app/scripts/jquery.min.js'
       // Other scripts
     ])

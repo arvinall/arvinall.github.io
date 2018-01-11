@@ -66,6 +66,7 @@
     this['addEventListener'] = function() {};
     this['fireEvent'] = function() {};
     this['temp'] = Object.create(null);
+    this['activity'] = function() {};
 
     // handle addEventListener
     this.addEventListener = function addEventListener(operator, event, handler) {

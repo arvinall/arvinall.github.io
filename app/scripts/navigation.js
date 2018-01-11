@@ -14,10 +14,12 @@
     navigationFrame_Element = $('.Navigation__frame')
     navigationItem_Element = $('.Navigation__item')
     emptyItem_Element = function () {
-      var result = $(navigationItem_Element[0]).clone()
+      var result = $(navigationItem_Element[0]).clone(),
+        link = result.find('a')
 
       result.addClass('Navigation__item--empty')
-      result.text('.')
+      link.text('.')
+      link.attr('href', 'javascript:void(0)')
 
       return result
     }
@@ -122,7 +124,9 @@
     if (!navigation_Element.hasClass('Navigation--show'))
       navigation_Element.addClass('Navigation--show')
     if (!background_Element.hasClass('Background--show'))
-    background_Element.addClass('Background--show')
+      setTimeout(function () {
+        background_Element.addClass('Background--show')
+      }, 800)
   })
 
   // Before quit

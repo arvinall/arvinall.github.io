@@ -39,11 +39,12 @@ html, body {
 
 .Background {
   position: fixed;
-  z-index: 0;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+
+  $self: &;
 
   &.Background--show {
     &:after, &:before {
@@ -68,12 +69,10 @@ html, body {
     opacity: 0;
   }
   &:after {
-    z-index: -1;
-    background: linear-gradient( 135deg, #32CCBC 10%, #FD6585 100%);
+    background: linear-gradient( 135deg, #32CCBC 10%, #FC466B 100%);
   }
   &:before {
-    z-index: -2;
-    background: linear-gradient( 135deg, #FD6585 10%, #32CCBC 100%);
+    background: linear-gradient( 135deg, #FC466B 10%, #32CCBC 100%);
   }
 }
 
@@ -84,13 +83,14 @@ html, body {
   left: 0;
   bottom: 0;
   right: 0;
-  background: white;
+  transform: scale(0);
+  transition: transform .5s linear;
   display: none;
   &.Loader--open {
     display: block;
+    transform: scale(1);
   }
   &.Loader--leave {
-    transition: transform .5s linear;
     transform: scale(0);
     .Loader__frame--inner {
       animation-name: none;
@@ -193,6 +193,9 @@ h1 {
 
   &.Navigation--show {
     transform: translate(0, 0);
+    .Navigation__item {
+      background: linear-gradient( 135deg, rgba(255, 255, 255, .25) 10%, rgba(255, 255, 255, .05) 100%);
+    }
   }
   &__frame {
     list-style: none;
@@ -208,10 +211,10 @@ h1 {
     font-size: 1.5em;
     text-align: center;
     box-sizing: border-box;
-    background: linear-gradient( 135deg, rgba(255, 255, 255, .25) 10%, rgba(255, 255, 255, .05) 100%);
     border: 1px solid rgba(255, 255, 255, .25);
     margin: .75em;
-    transition: all .25s linear;
+    transition: all .5s linear;
+
     &:hover {
       background: linear-gradient( 135deg, rgba(255, 255, 255, .3) 10%, rgba(255, 255, 255, .1) 100%);
     }
@@ -223,9 +226,11 @@ h1 {
     }
     a {
       display: block;
-      color: inherit;
-      text-decoration: none;
+      color: inherit !important;
+      text-decoration: none !important;
       padding: .75em;
+      outline: none !important;
+      background: transparent !important;
     }
   }
 }
@@ -290,6 +295,59 @@ h1 {
       &:after {
         transform: rotate(45deg) translate(-.015em, -.01em);
       }
+    }
+  }
+}
+
+.Activity {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+
+  &.Activity--active {
+    display: block;
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.Activity__background--show {
+      &:after, &:before {
+        opacity: 1;
+      }
+    }
+
+    &.Activity__background--reverse {
+      &:after {
+        opacity: 0;
+      }
+    }
+
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: opacity .45s linear;
+      opacity: 0;
+    }
+
+  }
+  &[data-name="booklet"] {
+    .Activity__background:after {
+      background: linear-gradient( 135deg, #96c93d 10%, #00b09b 100%);
+    }
+    .Activity__background:before {
+      background: linear-gradient( 135deg, #00b09b 10%, #96c93d 100%);
     }
   }
 }
