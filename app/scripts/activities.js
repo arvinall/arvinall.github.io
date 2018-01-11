@@ -7,23 +7,40 @@
     activitiesContext = Object.create(null),
     activityContext = Object.create(activitiesContext),
     controllers,
-    loader_Element
+    loader_Element,
+    arrowElement,
+    titleElement,
+    Activities_Element
 
   this.addEventListener('DOM', 'Complete', function ActivitiesDomActions () {
+    Activities_Element = $('.Activities')
+
     activityElement = function (name) {
-      return $('.Activities').find('[data-name="' + name + '"]')
+      return Activities_Element.find('[data-name="' + name + '"]')
     }
     loader_Element = $('.Loader')
+    arrowElement = $('.Arrow')
+    titleElement = $('.Board__title')
   })
 
-  this.activity = (function activity () {
-    var element, C = this, P = Object.getPrototypeOf(C)
+  this.activity = (function activity (prototype) {
+    var element, C = this, P = activitiesContext, template
+
+    template = function template (name) {
+      var element
+
+      if (typeof name === 'string') {
+        element = $('<section class="Activity" data-name="' + name + '"></section>')
+        element.append($('<div class="Activity__background"></div>'))
+        element.append($('<div class="Activity__template"></div>'))
+
+        return element
+      }
+
+      return false
+    }
 
     controllers = Object.create(C);
-
-    function argController (name, value) {
-      return (typeof this[name] !== (typeof value === 'string' ? value : 'string'))
-    }
 
     P['active'] = ''
 
@@ -36,21 +53,25 @@
     }
 
     P['add'] = function addActivity (options) {
-      var aC, element, res
+      var aC, element, res, object
 
       if (typeof options !== 'object') {
         throw Error('Option argument must be provided')
       }
 
-      aC = argController.bind(options)
+      aC = Enviroment.argController.bind(options)
 
       if (aC('name')) {
         return false
       }
 
-      C[options.name] = options;
+      object = Object.create(P)
+      object['details'] = options
+
+      C[options.name] = object;
 
       (function () {
+        Activities_Element.append(template(options.name))
         this['element'] = activityElement(options.name)
         res = this
       }).call(C[options.name])
@@ -66,7 +87,7 @@
         throw Error('Option argument must be provided')
       }
 
-      aC = argController.bind(options)
+      aC = Enviroment.argController.bind(options)
 
       if (aC('name')) {
         return false
@@ -78,14 +99,14 @@
         if (obj) {
           P.active = obj.name
           if (!obj.element.hasClass('Activity--loaded')) {
-            C.controllers.loader.on()
+            if (C.get(C.active).loaded === false)
+              C.controllers.loader.on()
           }
         }
 
       })()
 
-      return C.get()
-
+      return C
     };
 
     // Controllers
@@ -99,39 +120,114 @@
         return element
       }
 
-      P['controllers'] = controllers = {
-        'loader': {
-          on: function makeLoaderApear () {
-            loader_Element.addClass('Loader--leave')
-            loader_Element.addClass('Loader--open')
+      P['controllers'] = controllers
 
-            setTimeout(function () {
-              loader_Element.removeClass('Loader--leave')
-            }, 50)
-          },
-          off: function makeLoaderDisapear () {
-            loader_Element.addClass('Loader--leave')
+      P.controllers.loader = {
+        on: function makeLoaderApear (cb) {
+          loader_Element.addClass('Loader--leave')
+          loader_Element.addClass('Loader--open')
 
-            setTimeout(function () {
-              loader_Element.removeClass('Loader--open')
-              loader_Element.removeClass('Loader--leave')
-            }, 500)
-          }
+          setTimeout(function () {
+            loader_Element.removeClass('Loader--leave')
+          }, 50)
+
+          if (cb) setTimeout(cb.bind(P.controllers), 500)
         },
-        'background': {
-          on: function makeLoaderApear () {
-            activity_background().addClass('Activity__background--show')
+        off: function makeLoaderDisapear (cb) {
+          loader_Element.addClass('Loader--leave')
+
+          setTimeout(function () {
+            loader_Element.removeClass('Loader--open')
+            loader_Element.removeClass('Loader--leave')
+
+            if (cb) cb.call(P.controllers)
+          }, 500)
+        }
+      }
+      P.controllers.background = {
+        on: function makeLoaderApear (cb) {
+          activity_background().addClass('Activity__background--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 450)
+        },
+        off: function makeLoaderDisapear (cb) {
+          activity_background().removeClass('Activity__background--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 450)
+        },
+        reverse: function makeLoaderReverse (cb) {
+          activity_background().addClass('Activity__background--reverse')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 450)
+        }
+      }
+      P.controllers.backBtn = {
+        on: function makeBackBtnApear (cb) {
+          arrowElement.addClass('Arrow--open')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 250)
+        },
+        off: function makeBackBtnDisapear (cb) {
+          arrowElement.removeClass('Arrow--open')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 250)
+        },
+        arrow: {
+          on: function makeArrowApear (cb) {
+            arrowElement.addClass('Arrow--loaded')
+
+            if (cb) setTimeout(cb.bind(P.controllers), 500)
           },
-          off: function makeLoaderDisapear () {
-            activity_background().removeClass('Activity__background--show')
-          },
-          reverse: function makeLoaderReverse () {
-            activity_background().addClass('Activity__background--reverse')
+          off: function makeArrowDisapear (cb) {
+            arrowElement.removeClass('Arrow--loaded')
+
+            if (cb) setTimeout(cb.bind(P.controllers), 500)
           }
+        }
+      }
+      P.controllers.active = {
+        on: function makeApearCurrentActivity (name, cb) {
+          if (typeof name === 'string') C.active = name
+          C.get(C.active).element.addClass('Activity--active')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 50)
+        },
+        off: function makeDisapearCurrentActivity (cb) {
+          C.get(C.active).element.removeClass('Activity--active')
+
+          C.active = null
+
+          if (cb) cb.call(P.controllers)
+        }
+      }
+      P.controllers.loaded = {
+        on: function (name, cb) {
+          C.get(name || C.active).loaded = true
+
+          if (cb) cb.call(P.controllers)
+        },
+        off: function (cb) {
+          C.get(name || C.active).loaded = false
+
+          if (cb) cb.call(P.controllers)
+        }
+      }
+      P.controllers.title = {
+        on: function makeTitleApear (title, cb) {
+          if (title) titleElement.text(title)
+
+          titleElement.addClass('Board__title--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 250)
+        },
+        off: function makeTitleDisapear (cb) {
+          titleElement.removeClass('Board__title--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 250)
         }
       }
     })()
 
     return C
-  }).call(activityContext)
+  }).call(activityContext, activitiesContext)
 }).call(Enviroment)

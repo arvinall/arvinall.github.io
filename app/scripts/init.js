@@ -62,11 +62,16 @@
   _Initializing.call(Enviroment);
 
   function _Initializing() {
+    var self = this
+
     this['eventHandlers'] = Object.create(null);
     this['addEventListener'] = function() {};
     this['fireEvent'] = function() {};
     this['temp'] = Object.create(null);
     this['activity'] = function() {};
+    this['argController'] = function() {};
+    this['get'] = Object.create(null)
+    this['loadChecker'] = function () {}
 
     // handle addEventListener
     this.addEventListener = function addEventListener(operator, event, handler) {
@@ -121,6 +126,61 @@
       }
 
     };
+    // Check required function arguments
+    this.argController = function argController (name, value) {
+      return (typeof this[name] !== (typeof value === 'string' ? value : 'string'))
+    }
+    // Load structures and views
+    this.get = (function get () {
+      var R = Object.create(null), aC
+
+      function engine (options) {
+        return $.ajax({
+          url: location.protocol + '//' + location.host + options.url,
+          data: options.data,
+          success: options.success,
+          error: options.error,
+          dataType: options.dataType
+        });
+      }
+
+      R['structure'] = function getStructure (options) {
+        aC = aC = Enviroment.argController.bind(options)
+
+        if (aC('name') || aC('success', 'function')) return false
+
+        return engine({
+          url: '/structures/' + options.name + '.json',
+          success: options.success,
+          error: options.error,
+          dataType: 'json'
+        })
+      }
+
+      R['view'] = function getStructure (options) {
+        aC = aC = Enviroment.argController.bind(options)
+
+        if (aC('name') || aC('success', 'function')) return false
+
+        return engine({
+          url: '/views/' + options.name + '.xml',
+          success: options.success,
+          error: options.error,
+          dataType: 'html'
+        })
+      }
+
+      return R
+    })();
+    // Load checker
+    this.loadChecker = function loadChecker (i, name) {
+      this[i] = true
+
+      if (this[0] === true && this[1] === true) {
+        self.activity.controllers.loaded.on(name)
+        self.fireEvent('Activities', 'Load', [self.activity.get(name)], self)
+      }
+    }
 
     _DOMResourcesEventHandling.call(this);
   }

@@ -1,13 +1,19 @@
 /* eslint-disable */
 
 
+// Navigation
+(function Navigation () {
+  var self = this,
+    navigation_Element,
+    navigationFrame_Element,
+    navigationItem_Element,
+    emptyItem_Element,
+    navigationItemWithSpace_Element,
+    background_Element
 
-(function () {
-  var navigation_Element, navigationFrame_Element, navigationItem_Element, emptyItem_Element, navigationItemWithSpace_Element, background_Element
+  self.temp.navigationSizing = false
 
-  Enviroment.temp.navigationSizing = false
-
-  Enviroment.addEventListener('DOM', 'Complete', function NavigationElementFetching () {
+  self.addEventListener('DOM', 'Complete', function NavigationElementFetching () {
     var handler, handlerParams = Object.create(null), scrollPos = 0
 
     navigation_Element = $('.Navigation')
@@ -33,7 +39,7 @@
         var tmp, itemH = navigationItem_Element.outerHeight(),
           loopCheck, FRG = document.createDocumentFragment()
 
-        Enviroment.temp.navigationSizing = true
+        self.temp.navigationSizing = true
 
         if (navigationFrame_Element.outerHeight() > (itemH * navigationItem_Element.length)) {
           tmp = navigationFrame_Element.outerHeight() - (itemH * navigationItem_Element.length)
@@ -60,7 +66,7 @@
 
         navigationItemWithSpace_Element = $('.Navigation__item')
 
-        Enviroment.temp.navigationSizing = false
+        self.temp.navigationSizing = false
       })()
     };
 
@@ -75,7 +81,7 @@
 
         r = navigationItem_Element[0].offsetTop
 
-        if (Enviroment.temp.displayHeight > itemsHeight) {
+        if (self.temp.displayHeight > itemsHeight) {
           r = r - ((navigationFrame_Element.outerHeight() - itemsHeight) / 2)
         } else {
           r = r - (navigationItem_Element.outerHeight() * 1.5)
@@ -95,7 +101,7 @@
     navigationFrame_Element.on('scroll', function () {
       var source
 
-      if (Enviroment.temp.navigationSizing) return false
+      if (self.temp.navigationSizing) return false
 
       if (this.scrollTop < navigationItem_Element.outerHeight()) {
         navigationFrame_Element.prepend(navigationItemWithSpace_Element.clone())
@@ -118,8 +124,8 @@
   })
 
   // Navigation controller
-  Enviroment.route.parser.add('', function Navigation () {
-    Enviroment.route.controller = 'navigation'
+  self.route.parser.add('', function Navigation_Route () {
+    self.route.controller = 'navigation'
     // enter
     if (!navigation_Element.hasClass('Navigation--show'))
       navigation_Element.addClass('Navigation--show')
@@ -130,7 +136,7 @@
   })
 
   // Before quit
-  Enviroment.addEventListener('Route', 'Change', function NavigationQuit (R) {
+  self.addEventListener('Route', 'Change', function NavigationQuit (R) {
     // console.log(this.route.controllerCache)
   })
-})()
+}).call(Enviroment)

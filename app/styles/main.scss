@@ -26,6 +26,11 @@ html, body {
   padding: 0;
   min-height: 100vh;
   overflow: hidden;
+  text-align: right;
+}
+
+p, h1, h2, h3, h4, h5, h6, strong, b, blockquote, code, .rtl {
+  direction: rtl;
 }
 
 @keyframes loader {
@@ -69,10 +74,10 @@ html, body {
     opacity: 0;
   }
   &:after {
-    background: linear-gradient( 135deg, #32CCBC 10%, #FC466B 100%);
+    background: linear-gradient( 135deg, #e1eec3 10%, #f05053 100%);
   }
   &:before {
-    background: linear-gradient( 135deg, #FC466B 10%, #32CCBC 100%);
+    background: linear-gradient( 135deg, #f05053 10%, #e1eec3 100%);
   }
 }
 
@@ -183,6 +188,18 @@ h1 {
   &.Board--show {
     background: rgba(255, 255, 255, 1);
   }
+  &__title {
+    position: absolute;
+    font-size: 2.25em;
+    left: 50%;
+    top: 0;
+    z-index: 1;
+    transform: translateX(-50%) translateY(-150%);
+    transition: transform .25s linear;
+    &.Board__title--show {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
 }
 
 .Navigation {
@@ -238,11 +255,11 @@ h1 {
 .Arrow {
   $color: black;
   position: absolute;
-  font-size: 4em;
+  font-size: 3.25em;
   width: .75em;
   height: .5em;
-  right: .5em;
-  top: .5em;
+  right: 2rem;
+  top: 1.5rem;
   z-index: 1;
   transform: rotate(180deg);
   &__frame {
@@ -261,30 +278,18 @@ h1 {
       top: 0;
       bottom: 0;
       right: 37.5%;
+      transition: transform .25s linear;
     }
     &:before {
-      transform: rotate(-45deg) translate(-.015em, .01em);
+      transform: rotate(0deg) translate(0em, 0em);
       transform-origin: left;
     }
     &:after {
-      transform: rotate(45deg) translate(-.015em, -.01em);
+      transform: rotate(0deg) translate(0em, 0em);
       transform-origin: left;
     }
   }
-  &.Arrow--close {
-    transition: width .25s linear;
-    transition-delay: .25s;
-    width: 0;
-    .Arrow__frame {
-      &:before, &:after {
-        transition: all .25s linear;
-        transform: rotate(0) translate(0, 0);
-      }
-    }
-  }
-  &.Arrow--open {
-    transition-delay: 0s;
-    width: .75em;
+  &--loaded {
     .Arrow__frame {
       &:after, &:before {
         transition-delay: .25s;
@@ -296,6 +301,15 @@ h1 {
         transform: rotate(45deg) translate(-.015em, -.01em);
       }
     }
+  }
+  &.Arrow--close {
+    transition: width .25s linear;
+    transition-delay: .25s;
+    width: 0;
+  }
+  &.Arrow--open {
+    transition-delay: 0s;
+    width: .75em;
   }
 }
 
@@ -344,10 +358,18 @@ h1 {
   }
   &[data-name="booklet"] {
     .Activity__background:after {
-      background: linear-gradient( 135deg, #96c93d 10%, #00b09b 100%);
+      background: linear-gradient( 135deg, #EFEFBB 10%, #D4D3DD 100%);
     }
     .Activity__background:before {
-      background: linear-gradient( 135deg, #00b09b 10%, #96c93d 100%);
+      background: linear-gradient( 135deg, #D4D3DD 10%, #EFEFBB 100%);
     }
+  }
+
+  &__template {
+    position: absolute;
+    top: 4.5em;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }

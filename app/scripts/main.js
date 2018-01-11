@@ -65,4 +65,12 @@ Enviroment.addEventListener('DOM', 'Complete', function Main () {
     this.route.controller = 'notFound'
     this.route.setPrevUrl('')
   }
+
+  String.prototype['camelize'] = function camelize() {
+    var str = this
+
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+      return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+    }).replace(/\s+/g, '');
+  }
 })
