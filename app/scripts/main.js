@@ -1,78 +1,78 @@
 /* eslint-disable */
 
 // Main
-Enviroment.addEventListener('DOM', 'Complete', function Main () {
+Enviroment.addEventListener('DOM', 'Complete', function Main() {
   var loader_Element = $('.Loader'),
     intro_Element = $('.Intro'),
     board_Element = $('.Board'),
-    self = this
+    self = this;
 
   // Finishing the loader
-  setTimeout(function () {
-    loader_Element.addClass('Loader--leave')
+  setTimeout(function() {
+    loader_Element.addClass('Loader--leave');
 
-    setTimeout(function () {
-      loader_Element.removeClass('Loader--open')
-      loader_Element.removeClass('Loader--leave')
+    setTimeout(function() {
+      loader_Element.removeClass('Loader--open');
+      loader_Element.removeClass('Loader--leave');
 
-      sayHello(goodBye)
-    }, 500)
+      sayHello(goodBye);
+    }, 500);
 
-  }, 1000)
+  }, 1000);
 
   // Intro typing effect
-  function sayHello (cb) {
-    var welcoming_Element = $(intro_Element.children()[0])
+  function sayHello(cb) {
+    var welcoming_Element = $(intro_Element.children()[0]);
 
-    welcoming_Element.addClass('Intro__welcoming--start')
+    welcoming_Element.addClass('Intro__welcoming--start');
 
-    setTimeout(cb, 2500 + 2000)
+    setTimeout(cb, 2500 + 2000);
   }
 
   // Leave the intro
-  function goodBye () {
-    intro_Element.addClass('Intro--leave')
-    board_Element.addClass('Board--show')
+  function goodBye() {
+    intro_Element.addClass('Intro--leave');
+    board_Element.addClass('Board--show');
 
-    setTimeout(function () {
-      intro_Element.css('display', 'none')
+    setTimeout(function() {
+      intro_Element.css('display', 'none');
 
-      self.route.engine()
-    }, 500)
+      self.route.engine();
+    }, 500);
   }
 
   // cache device display height
-  Enviroment.temp.displayHeight = (function () {
-    var h = $(window).height.bind($(window))
+  Enviroment.temp.displayHeight = (function() {
+    var h = $(window).height.bind($(window));
 
-    $(window).resize(function () {
-      Enviroment.temp.displayHeight = h()
-    })
+    $(window).resize(function() {
+      Enviroment.temp.displayHeight = h();
+    });
 
-    return h()
+    return h();
   })();
 
   // Back button action
-  (function BackButton () {
-    var btn = $('.Arrow')
+  (function BackButton() {
+    var btn = $('.Arrow');
 
-    btn.on('click', function () {
+    btn.on('click', function() {
       if (!Enviroment.activity.get('booklet').details.backTransaction) {
-        location.hash = self.route.prevUrl
+        location.hash = self.route.prevUrl;
       }
-    })
+    });
   })();
 
-  Enviroment.route.notFound = function notFound () {
-    this.route.controller = 'notFound'
-    this.route.setPrevUrl('')
-  }
+  Enviroment.route.notFound = function notFound() {
+    this.route.controller = 'notFound';
+    this.route.setPrevUrl('');
+  };
 
   String.prototype['camelize'] = function camelize() {
-    var str = this
+    var str = this;
 
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-      return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+      return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
     }).replace(/\s+/g, '');
-  }
-})
+  };
+});

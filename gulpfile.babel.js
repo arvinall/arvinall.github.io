@@ -200,11 +200,21 @@ gulp.task('serve:dist', ['default'], () =>
   })
 );
 
+// Structures and Views task
+gulp.task('structures', () =>
+  gulp.src('app/structures/**/*')
+    .pipe(gulp.dest('dist/structures'))
+);
+gulp.task('views', () =>
+  gulp.src('app/views/**/*')
+    .pipe(gulp.dest('dist/views'))
+);
+
 // Build production files, the default task
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
-    ['lint', 'html', 'scripts', 'images', 'copy'],
+    ['lint', 'html', 'scripts', 'images', 'copy', 'structures', 'views'],
     'generate-service-worker',
     cb
   )
