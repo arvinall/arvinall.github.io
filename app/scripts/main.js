@@ -57,7 +57,9 @@ Enviroment.addEventListener('DOM', 'Complete', function Main () {
     var btn = $('.Arrow')
 
     btn.on('click', function () {
-      location.hash = self.route.prevUrl
+      if (!Enviroment.activity.get('booklet').details.backTransaction) {
+        location.hash = self.route.prevUrl
+      }
     })
   })();
 

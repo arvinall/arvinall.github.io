@@ -17,8 +17,8 @@
   this.route['notFound'] = null
   this.route['prevUrl'] = null
   this.route.setPrevUrl = function setPrevUrl (value) {
-    if (typeof self.route.prevUrl !== 'string') {
-      self.route.prevUrl = value
+    if (typeof value === 'string') {
+      self.route.prevUrl = '/' + value
     }
   }
 
@@ -26,9 +26,9 @@
     function handler (cb) {
       var hash = (location.hash || '#/').slice(2)
 
-      self.route['controllerCache'] = !!self.route.controller ? self.route.controller : self.route.controllerCache
-      self.route.controller = null
+      self.route['controllerCache'] = typeof self.route.controller === 'string' ? self.route.controller : self.route.controllerCache
       self.route.prevUrl = typeof self.route.url === 'string' ? '/' + self.route.url : '/'
+      self.route.controller = null
       self.fireEvent('Route', 'Change', null, self)
 
       if (self.route.parser.run(hash) === false) {

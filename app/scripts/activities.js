@@ -8,9 +8,10 @@
     activityContext = Object.create(activitiesContext),
     controllers,
     loader_Element,
-    arrowElement,
-    titleElement,
-    Activities_Element
+    arrow_element,
+    title_element,
+    Activities_Element,
+    template_element
 
   this.addEventListener('DOM', 'Complete', function ActivitiesDomActions () {
     Activities_Element = $('.Activities')
@@ -19,8 +20,8 @@
       return Activities_Element.find('[data-name="' + name + '"]')
     }
     loader_Element = $('.Loader')
-    arrowElement = $('.Arrow')
-    titleElement = $('.Board__title')
+    arrow_element = $('.Arrow')
+    title_element = $('.Board__title')
   })
 
   this.activity = (function activity (prototype) {
@@ -98,9 +99,8 @@
 
         if (obj) {
           P.active = obj.name
-          if (!obj.element.hasClass('Activity--loaded')) {
-            if (C.get(C.active).loaded === false)
-              C.controllers.loader.on()
+          if (C.get(C.active).loaded === false) {
+            C.controllers.loader.on()
           }
         }
 
@@ -145,17 +145,17 @@
         }
       }
       P.controllers.background = {
-        on: function makeLoaderApear (cb) {
+        on: function makeBackgroundApear (cb) {
           activity_background().addClass('Activity__background--show')
 
           if (cb) setTimeout(cb.bind(P.controllers), 450)
         },
-        off: function makeLoaderDisapear (cb) {
+        off: function makeBackgroundDisapear (cb) {
           activity_background().removeClass('Activity__background--show')
 
           if (cb) setTimeout(cb.bind(P.controllers), 450)
         },
-        reverse: function makeLoaderReverse (cb) {
+        reverse: function makeBackgroundReverse (cb) {
           activity_background().addClass('Activity__background--reverse')
 
           if (cb) setTimeout(cb.bind(P.controllers), 450)
@@ -163,25 +163,25 @@
       }
       P.controllers.backBtn = {
         on: function makeBackBtnApear (cb) {
-          arrowElement.addClass('Arrow--open')
+          arrow_element.addClass('Arrow--open')
 
           if (cb) setTimeout(cb.bind(P.controllers), 250)
         },
         off: function makeBackBtnDisapear (cb) {
-          arrowElement.removeClass('Arrow--open')
+          arrow_element.removeClass('Arrow--open')
 
           if (cb) setTimeout(cb.bind(P.controllers), 250)
         },
         arrow: {
           on: function makeArrowApear (cb) {
-            arrowElement.addClass('Arrow--loaded')
+            arrow_element.addClass('Arrow--loaded')
 
-            if (cb) setTimeout(cb.bind(P.controllers), 500)
+            if (cb) setTimeout(cb.bind(P.controllers), 250)
           },
           off: function makeArrowDisapear (cb) {
-            arrowElement.removeClass('Arrow--loaded')
+            arrow_element.removeClass('Arrow--loaded')
 
-            if (cb) setTimeout(cb.bind(P.controllers), 500)
+            if (cb) setTimeout(cb.bind(P.controllers), 250)
           }
         }
       }
@@ -214,14 +214,34 @@
       }
       P.controllers.title = {
         on: function makeTitleApear (title, cb) {
-          if (title) titleElement.text(title)
+          if (title) title_element.text(title)
 
-          titleElement.addClass('Board__title--show')
+          title_element.addClass('Board__title--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 500)
+        },
+        off: function makeTitleDisapear (cb) {
+          title_element.removeClass('Board__title--show')
+
+          if (cb) setTimeout(cb.bind(P.controllers), 500)
+        }
+      }
+      P.controllers.template = {
+        on: function makeTemplateApear (cb) {
+          if (template_element === undefined) {
+            template_element = $('.Activity__template')
+          }
+
+          template_element.addClass('Activity__template--show')
 
           if (cb) setTimeout(cb.bind(P.controllers), 250)
         },
-        off: function makeTitleDisapear (cb) {
-          titleElement.removeClass('Board__title--show')
+        off: function makeTemplateeDisapear (cb) {
+          if (template_element === undefined) {
+            template_element = $('.Activity__template')
+          }
+
+          template_element.removeClass('Activity__template--show')
 
           if (cb) setTimeout(cb.bind(P.controllers), 250)
         }

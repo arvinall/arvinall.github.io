@@ -126,13 +126,27 @@
   // Navigation controller
   self.route.parser.add('', function Navigation_Route () {
     self.route.controller = 'navigation'
-    // enter
-    if (!navigation_Element.hasClass('Navigation--show'))
-      navigation_Element.addClass('Navigation--show')
-    if (!background_Element.hasClass('Background--show'))
-      setTimeout(function () {
-        background_Element.addClass('Background--show')
-      }, 800)
+
+    function enter () {
+      // enter
+      if (!navigation_Element.hasClass('Navigation--show'))
+        navigation_Element.addClass('Navigation--show')
+      if (!background_Element.hasClass('Background--show'))
+        setTimeout(function () {
+          background_Element.addClass('Background--show')
+        }, 800)
+    }
+
+    // Make previews view disapear
+    if (self.route.controllerCache) {
+      if (self.route.controller !== self.route.controllerCache) {
+        self.activity.get(self.route.controllerCache).details.activation.off(function () {
+          enter()
+        })
+      }
+    } else {
+      enter()
+    }
   })
 
   // Before quit

@@ -1,7 +1,5 @@
-<ul>
-  <li>هوررراا ۱</li>
-  <li>هوررراا ۲</li>
-  <li>هوررراا ۳</li>
-  <li>هوررراا ۴</li>
-  <li>هوررراا ۵</li>
-</ul>
+<div class="Booklet">
+  <div class="Booklet__list">
+    <ul></ul>
+  </div>
+</div>
