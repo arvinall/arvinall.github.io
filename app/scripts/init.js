@@ -132,7 +132,13 @@
     };
     // Load structures and views
     this.get = (function get() {
-      var R = Object.create(null), aC;
+      var R = Object.create(null), aC,
+      mime = {
+        markdown: {
+          ext: '.md',
+          type: 'text'
+        }
+      };
 
       function engine(options) {
         return $.ajax({
@@ -167,6 +173,19 @@
           success: options.success,
           error: options.error,
           dataType: 'html'
+        });
+      };
+
+      R['resource'] = function getResource(options) {
+        aC = aC = Enviroment.argController.bind(options);
+
+        if (aC('id', 'number') || aC('type') || aC('success', 'function')) return false;
+
+        return engine({
+          url: '/recources/' + (options.controller || self.route.controller || self.activity.active) + '/' + options.id + mime[options.type].ext,
+          success: options.success,
+          error: options.error,
+          dataType: mime[options.type].type
         });
       };
 

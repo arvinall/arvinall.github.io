@@ -7,6 +7,8 @@ Enviroment.addEventListener('DOM', 'Complete', function Main() {
     board_Element = $('.Board'),
     self = this;
 
+  self['introRequired'] = true;
+
   // Finishing the loader
   setTimeout(function() {
     loader_Element.addClass('Loader--leave');
@@ -15,7 +17,8 @@ Enviroment.addEventListener('DOM', 'Complete', function Main() {
       loader_Element.removeClass('Loader--open');
       loader_Element.removeClass('Loader--leave');
 
-      sayHello(goodBye);
+      // Run the router
+      self.route.engine();
     }, 500);
 
   }, 1000);
@@ -26,20 +29,26 @@ Enviroment.addEventListener('DOM', 'Complete', function Main() {
 
     welcoming_Element.addClass('Intro__welcoming--start');
 
-    setTimeout(cb, 2500 + 2000);
-  }
+    setTimeout(function () {
+      goodBye(cb || null)
+    }, 2500 + 2000);
+  };
 
   // Leave the intro
-  function goodBye() {
+  function goodBye(cb) {
     intro_Element.addClass('Intro--leave');
     board_Element.addClass('Board--show');
 
     setTimeout(function() {
       intro_Element.css('display', 'none');
-
-      self.route.engine();
+      if (cb) cb()
     }, 500);
-  }
+  };
+
+  self['intro'] = function (cb) {
+    sayHello(cb);
+    self.introRequired = false;
+  };
 
   // cache device display height
   Enviroment.temp.displayHeight = (function() {
@@ -74,5 +83,18 @@ Enviroment.addEventListener('DOM', 'Complete', function Main() {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
       return index === 0 ? letter.toLowerCase() : letter.toUpperCase();
     }).replace(/\s+/g, '');
+  };
+  String.prototype['titlize'] = function titlize() {
+    var camelCase = this;
+    // no side-effects
+    return camelCase
+    // inject space before the upper case letters
+      .replace(/([A-Z])/g, function(match) {
+        return " " + match;
+      })
+      // replace first char with upper case
+      .replace(/^./, function(match) {
+        return match.toUpperCase();
+      });
   };
 });

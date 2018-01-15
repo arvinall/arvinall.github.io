@@ -2,4 +2,14 @@
   <div class="Booklet__list">
     <ul></ul>
   </div>
+  <div class="Activity__slider">
+    <div class="Activity__sliderFrame">
+      <div class="Activity__sliderSlide">
+        <div class="Activity__sliderSlideFrame">
+          <h2 class="Activity__sliderTitle"></h2>
+          <div class="Activity__sliderContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

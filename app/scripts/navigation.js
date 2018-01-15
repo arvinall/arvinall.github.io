@@ -129,12 +129,20 @@
 
     function enter() {
       // enter
-      if (!navigation_Element.hasClass('Navigation--show'))
-        navigation_Element.addClass('Navigation--show');
-      if (!background_Element.hasClass('Background--show'))
-        setTimeout(function() {
-          background_Element.addClass('Background--show');
-        }, 800);
+      function enterHandler() {
+        if (!navigation_Element.hasClass('Navigation--show')) {
+          navigation_Element.addClass('Navigation--show');
+        }
+        if (!background_Element.hasClass('Background--show'))
+          setTimeout(function() {
+            background_Element.addClass('Background--show');
+          }, 800);
+      }
+      if (self.introRequired) {
+        self.intro(enterHandler)
+      } else {
+        enterHandler()
+      }
     }
 
     // Make previews view disapear

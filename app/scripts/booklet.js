@@ -10,7 +10,7 @@ var list_element, aC;
       loadChecker: [false, false],
       backTransaction: false,
       activation: Object.create(null)
-    }, activity;
+    }, activity, MD = new showdown.Converter();
 
   // Apear and Disapear handler
   activityOptions.activation.on = (function bookletApear(cb) {
@@ -66,72 +66,124 @@ var list_element, aC;
   });
 
   self.addEventListener('Activities', 'Load', function bookletOnLoad(Activity) {
-    aC = Enviroment.argController.bind(Enviroment.route);
+    if (Activity.details.name === activityOptions.name) {
+      aC = Enviroment.argController.bind(Enviroment.route);
 
-    Activity.element.find('.Activity__template').html(Activity.view);
+      Activity.element.find('.Activity__template').html(Activity.view);
 
-    // Make the list
-    (function makeTheList() {
-      var fragment = document.createDocumentFragment(), c;
+      // Make the list
+      (function makeTheList() {
+        var fragment = document.createDocumentFragment(), c;
 
-      for (c = 0; c < Activity.data.length; c++) {
-        fragment.appendChild(
-          $('<a href="' + location.protocol + '//' + location.host + '/#/' + activityOptions.name + '/' + Activity.data[c].enName.camelize() + '"></a>').
+        for (c = 0; c < Activity.data.length; c++) {
+          fragment.appendChild(
+            $('<a href="' + location.protocol + '//' + location.host + '/#/' + activityOptions.name + '/' + Activity.data[c].enName.camelize() + '"></a>').
             append($('<li class="Booklet__listItem">' + Activity.data[c].faName + '</li>'))[0]
-        );
-      }
+          );
+        }
 
-      if (list_element === undefined) {
-        list_element = $('.Booklet__list ul');
-      }
+        if (list_element === undefined) {
+          list_element = $('.Booklet__list ul');
+        }
 
-      list_element[0].appendChild(fragment);
+        list_element[0].appendChild(fragment);
 
-    }).call(Activity);
+      }).call(Activity);
+      // Make the slider
+      (function slider() {
+        var sliderFrame_Element = $('.Activity__sliderFrame'), slideElementMaker = function (options) {
+          var aC = self.argController.bind(options)
 
-    Activity.controllers.loader.off();
+          return (function () {
+            var slide = $(sliderFrame_Element[0].children[0]).clone()
+
+            if (!aC('id', 'number')) {
+              slide[0].dataset['id'] = options.id
+            }
+
+            if (!aC('enName')) {
+              slide[0].dataset['name'] = options.enName
+            }
+
+            if (!aC('faName')) {
+              slide.find('h2').text(options.faName)
+            }
+
+            return slide
+          })();
+        }, c,
+          FRG = document.createDocumentFragment();
+
+        for (c = 0; c < Activity.data.length; c++) {
+          FRG.appendChild(slideElementMaker(Activity.data[c])[0])
+        }
+
+        sliderFrame_Element.empty()
+        sliderFrame_Element[0].appendChild(FRG)
+
+        sliderFrame_Element.css('width', (100 * Activity.data.length) + '%')
+      }).call(Activity);
+
+      Activity.controllers.loader.off();
+    }
   });
 
   self.route.parser.add('booklet/:enName', function Booklet_Route() {
     self.route.controller = activityOptions.name;
 
+    activity.activation({
+      name: activityOptions.name
+    });
+
     if (aC('enName')) {
+      $('.Activity[data-name="' + activityOptions.name + '"] .Activity__slider').removeClass('Activity__slider--show');
+      $('.Booklet__list').removeClass('Booklet__list--hide');
       self.route.setPrevUrl('');
       if (self.route.controllerCache) {
         if (self.route.controllerCache === 'navigation') {
-          activity.activation({
-            name: activityOptions.name,
-            callback: activityOptions.activation.on
-          });
+          activityOptions.activation.on()
         } else
         if (self.route.controllerCache !== self.route.controller) {
           self.activity.get(self.route.controllerCache).activation.off(function() {
-            activity.activation({
-              name: activityOptions.name,
-              callback: activityOptions.activation.on
-            });
+            activityOptions.activation.on();
           });
         } else {
           if (self.activity.active === activityOptions.name) {
-            self.activity.controllers.template.on();
+
           } else {
-            activity.activation({
-              name: activityOptions.name,
-              callback: activityOptions.activation.on
-            });
+            activityOptions.activation.on()
           }
         }
       } else {
-        activity.activation({
-          name: activityOptions.name,
-          callback: activityOptions.activation.on
-        });
+        activityOptions.activation.on();
       }
     } else {
-      activityOptions.activation.on(function() {
-        self.activity.controllers.template.off();
-      });
       self.route.setPrevUrl(activityOptions.name);
+      if (self.activity.active !== activityOptions.name) {
+        activityOptions.activation.on(function () {
+          $('.Booklet__list').addClass('Booklet__list--hide');
+        });
+      } else {
+        $('.Booklet__list').addClass('Booklet__list--hide');
+      }
+
+      $('.Activity[data-name="' + activityOptions.name + '"] .Activity__slider').addClass('Activity__slider--show');
+
+      // Get markdown
+      (function () {
+        var markdownSelected = self.activity.booklet.data.find(function (E) {
+          return E.enName === self.route.enName.titlize();
+        });
+
+        self.get.resource({
+          id: markdownSelected.id,
+          type: 'markdown',
+          success: function (R) {
+            R = MD.makeHtml(R)
+            $('.Activity__sliderSlide[data-name="' + markdownSelected.enName + '"] .Activity__sliderContent').html(R)
+          }
+        });
+      })();
     }
   });
 

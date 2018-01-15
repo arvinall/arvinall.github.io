@@ -17,12 +17,12 @@
   },{
     "id" : 41,
     "faName" : "باغِ ثقیل",
-    "enName" : "Valuable garden",
+    "enName" : "Valuable Garden",
     "direction" : "FaClassic"
   },{
     "id" : 40,
     "faName" : "مرحله بعد",
-    "enName" : "next level",
+    "enName" : "Next Level",
     "direction" : "rtl"
   },{
     "id" : 39,
@@ -37,17 +37,17 @@
   },{
     "id" : 37,
     "faName" : "یک صد سده",
-    "enName" : "One hundred centuries",
+    "enName" : "One Hundred Centuries",
     "direction" : "rtl"
   },{
     "id" : 36,
     "faName" : "پدر، پسر، روح القدس",
-    "enName" : "trinity",
+    "enName" : "Trinity",
     "direction" : "rtl"
   },{
     "id" : 35,
     "faName" : "من !",
-    "enName" : "Me !",
+    "enName" : "Me",
     "direction" : "rtl"
   },{
     "id" : 34,
@@ -57,12 +57,12 @@
   },{
     "id" : 33,
     "faName" : "معابر",
-    "enName" : "passageway",
+    "enName" : "Passageway",
     "direction" : "rtl"
   },{
     "id" : 32,
     "faName" : "اشتباه خوب",
-    "enName" : "Well mistake",
+    "enName" : "Well Mistake",
     "direction" : "rtl"
   },{
     "id" : 31,
@@ -72,152 +72,152 @@
   },{
     "id" : 30,
     "faName" : "بازدم",
-    "enName" : "expiration",
+    "enName" : "Expiration",
     "direction" : "rtl"
   },{
     "id" : 29,
     "faName" : "Somebody want help me",
-    "enName" : "Somebody want help me",
+    "enName" : "Somebody Want Help Me",
     "direction" : "ltr"
   },{
     "id" : 28,
     "faName" : "بینوایان",
-    "enName" : "les miserables",
+    "enName" : "Les Miserables",
     "direction" : "rtl"
   },{
     "id" : 27,
     "faName" : "دو راهی",
-    "enName" : "two ways",
+    "enName" : "Two Ways",
     "direction" : "FaClassic"
   },{
     "id" : 26,
     "faName" : "تلخ و شیرین",
-    "enName" : "bitter and sugary",
+    "enName" : "Bitter And Sugary",
     "direction" : "FaClassic"
   },{
     "id" : 25,
     "faName" : "این کجا و آن کجا",
-    "enName" : "compare",
+    "enName" : "Compare",
     "direction" : "FaClassic"
   },{
     "id" : 24,
     "faName" : "تا به آنجا برسم آرامشی آید پدید",
-    "enName" : "when i arrived to there visible peace",
+    "enName" : "When I Arrived To There Visible Peace",
     "direction" : "rtl"
   },{
     "id" : 23,
     "faName" : "ای مویز",
-    "enName" : "currant",
+    "enName" : "Currant",
     "direction" : "FaClassic"
   },{
     "id" : 22,
     "faName" : "نظریه آنها!",
-    "enName" : "they theory",
+    "enName" : "They Theory",
     "direction" : "FaClassic"
   },{
     "id" : 21,
     "faName" : "در جمعی ز دگران بودم",
-    "enName" : "in a group of others",
+    "enName" : "In A Group Of Others",
     "direction" : "rtl"
   },{
     "id" : 20,
     "faName" : "میزنم حرف",
-    "enName" : "i talk",
+    "enName" : "I Talk",
     "direction" : "FaClassic"
   },{
     "id" : 19,
     "faName" : "یک دیدگاه",
-    "enName" : "a kind of viewpoint",
+    "enName" : "A Kind Of Viewpoint",
     "direction" : "FaClassic"
   },{
     "id" : 18,
     "faName" : "فضول‌یاب",
-    "enName" : "find the bad ass",
+    "enName" : "Find The Bad Ass",
     "direction" : "rtl"
   },{
     "id" : 17,
     "faName" : "نامه سرگشاده",
-    "enName" : "big head letter",
+    "enName" : "Big Head Letter",
     "direction" : "rtl"
   },{
     "id" : 16,
     "faName" : "چار چشمیا",
-    "enName" : "four eyes persons",
+    "enName" : "Four Eyes Persons",
     "direction" : "rtl"
   },{
     "id" : 15,
     "faName" : "جهان‌بینی",
-    "enName" : "world view",
+    "enName" : "World View",
     "direction" : "rtl"
   },{
     "id" : 14,
     "faName" : "سکوت",
-    "enName" : "silent",
+    "enName" : "Silent",
     "direction" : "rtl"
   },{
     "id" : 13,
     "faName" : "عمارت غم",
-    "enName" : "mansion of Grief",
+    "enName" : "Mansion Of Grief",
     "direction" : "rtl"
   },{
     "id" : 12,
     "faName" : "آنچه گویم",
-    "enName" : "that i say",
+    "enName" : "that I Say",
     "direction" : "rtl"
   },{
     "id" : 11,
     "faName" : "در پی من آمدی",
-    "enName" : "came to me",
+    "enName" : "Came To Me",
     "direction" : "rtl"
   },{
     "id" : 10,
     "faName" : "چهارصد و بیست",
-    "enName" : "four hundred and twenty",
+    "enName" : "Four Hundred And Twenty",
     "direction" : "rtl"
   },{
     "id" : 9,
     "faName" : "دیگر نیست در این خانه جایی برای تو",
-    "enName" : "The house is not the place for you anymore",
+    "enName" : "The House Is Not The Place For You Anymore",
     "direction" : "rtl"
   },{
     "id" : 8,
     "faName" : "نامه یک ... تازه‌کار",
-    "enName" : "letter of a newbie ...",
+    "enName" : "Letter Of A Newbie",
     "direction" : "rtl"
   },{
     "id" : 7,
     "faName" : "بالا کدوم طرفه !!؟",
-    "enName" : "where is the top !!?",
+    "enName" : "Where Is The Top",
     "direction" : "rtl"
   },{
     "id" : 6,
     "faName" : "تله",
-    "enName" : "trap",
+    "enName" : "Trap",
     "direction" : "ltr"
   },{
     "id" : 5,
     "faName" : "لانه موش",
-    "enName" : "nest rat",
+    "enName" : "Nest Rat",
     "direction" : "rtl"
   },{
     "id" : 4,
     "faName" : "شب",
-    "enName" : "night",
+    "enName" : "Night",
     "direction" : "rtl"
   },{
     "id" : 3,
     "faName" : "مغز من",
-    "enName" : "my mind",
+    "enName" : "My Mind",
     "direction" : "rtl"
   },{
     "id" : 2,
     "faName" : "دو، سه روز",
-    "enName" : "two, three days",
+    "enName" : "Two, Three Days",
     "direction" : "rtl"
   },{
     "id" : 1,
     "faName" : "بانگ طبل تهی",
-    "enName" : "sound of empty drum",
+    "enName" : "Sound Of Empty Drum",
     "direction" : "rtl"
   }
 ]

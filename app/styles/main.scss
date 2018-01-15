@@ -328,6 +328,65 @@ h1 {
     display: block;
   }
 
+/*Activity__slider
+  Activity__sliderFrame
+  Activity__sliderSlide*/
+
+  .Activity__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    opacity: 0;
+    transition: opacity .5s linear;
+    display: none;
+    &--show {
+      display: block;
+      opacity: 1;
+    }
+    &--scroll {
+      .Activity__sliderSlide {
+        width: 90vw;
+        &Frame {
+          border-color: #c8c8c8;
+          transform: scale(.75);
+        }
+      }
+    }
+
+    &Frame {
+      height: 100%;
+    }
+    &Content {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: calc(100% - 4.9em);
+    }
+    &Slide {
+      width: 100vw;
+      height: 100%;
+      box-sizing: border-box;
+      float: left;
+      &Frame {
+        height: calc(100% - 1em);
+        border: 1px solid transparent;
+        padding: .5em;
+        border-radius: .5em;
+        transition: transform .25s linear;
+        transform: scale(1);
+      }
+    }
+    &Title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 0;
+    }
+  }
+
   &__background {
     position: absolute;
     top: 0;
@@ -384,6 +443,11 @@ h1 {
 
 .Booklet {
   &__list {
+    &--hide {
+      .Booklet__listItem {
+        opacity: 0;
+      }
+    }
     ul {
       display: block;
       list-style: none;
@@ -399,8 +463,9 @@ h1 {
       padding: .75em;
       position: relative;
       color: black;
-      transition: color .25s linear;
+      transition: color .25s linear, opacity .5s linear;
       z-index: 0;
+      opacity: 1;
       &:after {
         content: '';
         display: block;
@@ -408,7 +473,7 @@ h1 {
         z-index: -1;
         width: .5em;
         height: 1px;
-        background: black;
+        background: rgba(0, 0, 0, .25);
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
