@@ -1,5 +1,6 @@
 /* eslint-disable */
-var list_element, aC;
+var list_element, aC,
+  fragment = document.createDocumentFragment();
 
 // Booklet section
 (function Booklet() {
@@ -66,6 +67,7 @@ var list_element, aC;
   });
 
   self.addEventListener('Activities', 'Load', function bookletOnLoad(Activity) {
+
     if (Activity.details.name === activityOptions.name) {
       aC = Enviroment.argController.bind(Enviroment.route);
 
@@ -73,12 +75,12 @@ var list_element, aC;
 
       // Make the list
       (function makeTheList() {
-        var fragment = document.createDocumentFragment(), c;
+        var c;
 
-        for (c = 0; c < Activity.data.length; c++) {
-          fragment.appendChild(
-            $('<a href="' + location.protocol + '//' + location.host + '/#/' + activityOptions.name + '/' + Activity.data[c].enName.camelize() + '"></a>').
-            append($('<li class="Booklet__listItem">' + Activity.data[c].faName + '</li>'))[0]
+        for (c = 0; c < this.data.length; c++) {
+          fragment.append(
+            $('<a href="' + location.protocol + '//' + location.host + '/#/' + activityOptions.name + '/' + this.data[c].enName.camelize() + '"></a>').
+            append($('<li class="Booklet__listItem">' + this.data[c].faName + '</li>'))[0]
           );
         }
 
@@ -92,34 +94,34 @@ var list_element, aC;
       // Make the slider
       (function slider() {
         var sliderFrame_Element = $('.Activity__sliderFrame'), slideElementMaker = function (options) {
-          var aC = self.argController.bind(options)
+          var aC = self.argController.bind(options);
 
           return (function () {
-            var slide = $(sliderFrame_Element[0].children[0]).clone()
+            var slide = $(sliderFrame_Element[0].children[0]).clone();
 
             if (!aC('id', 'number')) {
-              slide[0].dataset['id'] = options.id
+              slide[0].dataset['id'] = options.id.toString();
             }
 
             if (!aC('enName')) {
-              slide[0].dataset['name'] = options.enName
+              slide[0].dataset['name'] = options.enName;
             }
 
             if (!aC('faName')) {
-              slide.find('h2').text(options.faName)
+              slide.find('h2').text(options.faName);
             }
 
             return slide
           })();
-        }, c,
-          FRG = document.createDocumentFragment();
+        }, c;
 
-        for (c = 0; c < Activity.data.length; c++) {
-          FRG.appendChild(slideElementMaker(Activity.data[c])[0])
+        for (c = 0; c < this.data.length; c++) {
+          fragment.append(slideElementMaker(this.data[c])[0])
         }
 
+
         sliderFrame_Element.empty()
-        sliderFrame_Element[0].appendChild(FRG)
+        sliderFrame_Element[0].appendChild(fragment)
 
         sliderFrame_Element.css('width', (100 * Activity.data.length) + '%')
       }).call(Activity);
@@ -167,13 +169,18 @@ var list_element, aC;
         $('.Booklet__list').addClass('Booklet__list--hide');
       }
 
+
+      self.activity.controllers.slider.active();
+
       $('.Activity[data-name="' + activityOptions.name + '"] .Activity__slider').addClass('Activity__slider--show');
 
       // Get markdown
       (function () {
-        var markdownSelected = self.activity.booklet.data.find(function (E) {
+        var markdownSelected = self.activity.get('booklet').data.find(function (E) {
           return E.enName === self.route.enName.titlize();
         });
+
+        self.activity.controllers.slider.go(markdownSelected.id);
 
         self.get.resource({
           id: markdownSelected.id,

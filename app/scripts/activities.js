@@ -248,6 +248,136 @@
           if (cb) setTimeout(cb.bind(P.controllers), 250);
         }
       };
+      P.controllers.slider = {
+        active: function () {
+          var slider = $('.Activity--active .Activity__slider'), slide = function () {
+              return slider.find('.Activity__sliderSlide--active');
+            },
+            Ac = self.argController.bind(slider[0].dataset);
+
+          if(!Ac('sliderActive')) {
+            return false;
+          }
+
+          this.handler(slider, slide(), function () {
+            slider[0].dataset['sliderActive'] = '';
+          });
+        },
+        handler: function (slider, slide, callback) {
+          var p = slider.scrollLeft.bind(slider),
+            options = {
+              shadows: 5
+            }, scroling = false, touchPosCache = 0, touchStartPosCache = 0, viewportWidth = $(window).width(),
+            dir,
+          sliderConstructor = this;
+
+          slider.on('touchmove', function (E) {
+            touchMoveHandling.apply(this, arguments);
+          });
+
+          slider.on('touchend', function (E) {
+            touchEndHandling.apply(this, arguments);
+          });
+
+          slider.on('scroll', function () {
+            if (!scroling) {
+              scroling = true;
+            }
+          });
+
+          function touchMoveHandling (E) {
+            if (sliderConstructor.going === false) {
+              if ((touchPosCache || touchStartPosCache) < E.touches[0].clientX) {
+                dir = 'left';
+                if (!scroling) {
+                  scroling = true;
+                }
+              } else if ((touchPosCache || touchStartPosCache) > E.touches[0].clientX) {
+                dir = 'right';
+                if (!scroling) {
+                  scroling = true;
+                }
+              }
+
+              if (scroling) {
+                touchPosCache = E.touches[0].clientX
+              }
+            }
+          }
+
+          function touchEndHandling (E) {
+            var nothing = true;
+
+            if (sliderConstructor.going === false) {
+              function getActiveSlideId () {
+                var element = $('.Activity--active .Activity__sliderSlide--active');
+
+                return element.data('id');
+              }
+
+              if (scroling) {
+                if (dir === 'left') {
+                  if (viewportWidth / options.shadows < (
+                      (touchStartPosCache > touchPosCache) ?
+                        touchStartPosCache - touchPosCache :
+                        touchPosCache - touchStartPosCache
+                    )) {
+                    sliderConstructor.go(Number(getActiveSlideId()) - 1);
+                    nothing = false;
+                  }
+                } else
+                if (dir === 'right') {
+                  if (viewportWidth / options.shadows < (
+                      (touchStartPosCache > touchPosCache) ?
+                        touchStartPosCache - touchPosCache :
+                        touchPosCache - touchStartPosCache
+                    )) {
+                    sliderConstructor.go(Number(getActiveSlideId()) + 1);
+                    nothing = false;
+                  }
+                }
+
+                if (nothing) {
+                  sliderConstructor.go(Number(getActiveSlideId()));
+                }
+
+                touchStartPosCache = touchPosCache = 0;
+
+                scroling = false;
+              }
+            }
+          }
+
+          callback();
+        },
+        go: function (id) {
+          var slider = $('.Activity--active .Activity__slider'),
+            slide,
+            pos,
+            idCache = id,
+            goConstructor = this;
+
+          this.going = true
+
+          id = (self.activity.get(self.activity.active).data.length - (id - 1)) || 1;
+
+          slide = slider.find('.Activity__sliderSlide[data-id="' + id.toString() + '"]');
+          pos = -slide[0].offsetLeft;
+
+          $('.Activity__sliderSlide').removeClass('Activity__sliderSlide--active');
+          slider.find('.Activity__sliderSlide[data-id="' + idCache + '"]').addClass('Activity__sliderSlide--active');
+
+          slider.css('overflowX', 'hidden');
+          setTimeout(function () {
+            slider.css('overflowX', 'scroll');
+            slider.animate({scrollLeft: pos + 'px'}, 500);
+            setTimeout(function () {
+              goConstructor.going = false
+            }, 500)
+          }, 50)
+        },
+        going: false
+      };
     })();
 
     return C;
