@@ -32,7 +32,7 @@
 
       if (typeof name === 'string') {
         element = $('<section class="Activity" data-name="' + name + '"></section>');
-        element.append($('<div class="Activity__background"></div>'));
+        element.append($('<div class="Activity__background"><div class="Activity__backgroundFrame"></div></div>'));
         element.append($('<div class="Activity__template"></div>'));
 
         return element;
@@ -268,8 +268,12 @@
             options = {
               shadows: 5
             }, scroling = false, touchPosCache = 0, touchStartPosCache = 0, viewportWidth = $(window).width(),
-            dir,
+            dir = '',
           sliderConstructor = this;
+
+          slider.on('touchstart', function (E) {
+            touchStartHandling.apply(this, arguments);
+          });
 
           slider.on('touchmove', function (E) {
             touchMoveHandling.apply(this, arguments);
@@ -285,63 +289,51 @@
             }
           });
 
+          function touchStartHandling (E) {
+            if (sliderConstructor.going === false) {
+              touchStartPosCache = E.touches[0].clientX;
+            }
+          }
+
           function touchMoveHandling (E) {
             if (sliderConstructor.going === false) {
-              if ((touchPosCache || touchStartPosCache) < E.touches[0].clientX) {
-                dir = 'left';
-                if (!scroling) {
-                  scroling = true;
-                }
-              } else if ((touchPosCache || touchStartPosCache) > E.touches[0].clientX) {
-                dir = 'right';
-                if (!scroling) {
-                  scroling = true;
-                }
-              }
-
               if (scroling) {
-                touchPosCache = E.touches[0].clientX
+                if ((touchPosCache || touchStartPosCache) < E.touches[0].clientX) {
+                  dir = 'right';
+                } else if ((touchPosCache || touchStartPosCache) > E.touches[0].clientX) {
+                  dir = 'left';
+                }
+
+                touchPosCache = E.touches[0].clientX;
               }
             }
           }
 
           function touchEndHandling (E) {
-            var nothing = true;
-
             if (sliderConstructor.going === false) {
               function getActiveSlideId () {
-                var element = $('.Activity--active .Activity__sliderSlide--active');
-
-                return element.data('id');
+                return $('.Activity--active .Activity__sliderSlide--active').data('id');
               }
 
               if (scroling) {
-                if (dir === 'left') {
-                  if (viewportWidth / options.shadows < (
-                      (touchStartPosCache > touchPosCache) ?
-                        touchStartPosCache - touchPosCache :
-                        touchPosCache - touchStartPosCache
-                    )) {
+                if (viewportWidth / options.shadows < (
+                    (touchStartPosCache > touchPosCache) ?
+                      touchStartPosCache - touchPosCache :
+                      touchPosCache - touchStartPosCache
+                  )) {
+                  if (dir === 'right') {
                     sliderConstructor.go(Number(getActiveSlideId()) - 1);
-                    nothing = false;
-                  }
-                } else
-                if (dir === 'right') {
-                  if (viewportWidth / options.shadows < (
-                      (touchStartPosCache > touchPosCache) ?
-                        touchStartPosCache - touchPosCache :
-                        touchPosCache - touchStartPosCache
-                    )) {
+                  } else
+                  if (dir === 'left') {
                     sliderConstructor.go(Number(getActiveSlideId()) + 1);
-                    nothing = false;
                   }
-                }
-
-                if (nothing) {
+                } else {
                   sliderConstructor.go(Number(getActiveSlideId()));
                 }
 
                 touchStartPosCache = touchPosCache = 0;
+
+                dir = '';
 
                 scroling = false;
               }
@@ -367,14 +359,13 @@
           $('.Activity__sliderSlide').removeClass('Activity__sliderSlide--active');
           slider.find('.Activity__sliderSlide[data-id="' + idCache + '"]').addClass('Activity__sliderSlide--active');
 
-          slider.css('overflowX', 'hidden');
-          setTimeout(function () {
-            slider.css('overflowX', 'scroll');
-            slider.animate({scrollLeft: pos + 'px'}, 500);
-            setTimeout(function () {
-              goConstructor.going = false
-            }, 500)
-          }, 50)
+          slider.animate({scrollLeft: pos + 'px'}, function () {
+            slider.css('overflowX', 'hidden');
+            goConstructor.going = false;
+             setTimeout(function () {
+               slider.css('overflowX', 'scroll');
+             }, 1500)
+          });
         },
         going: false
       };

@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-
 // Navigation
 (function Navigation() {
   var self = this,

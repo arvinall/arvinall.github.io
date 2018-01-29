@@ -420,11 +420,26 @@ h1 {
 
   }
   &[data-name="booklet"] {
-    .Activity__background:after {
-      background: linear-gradient( 135deg, #fff 10%, #c8c8c8 100%);
-    }
-    .Activity__background:before {
-      background: linear-gradient( 135deg, #c8c8c8 10%, #fff 100%);
+    .Activity__background {
+      font-size: 1.25em;
+      transform: scale(1);
+      transition: transform .15s linear;
+      &.Activity__background--touched {
+        transform: scale(1.25);
+      }
+      &:after {
+        background:radial-gradient(#fff .9em,transparent .85em),radial-gradient(#fff .9em,transparent .85em),transparent;
+        background-position: 0 0,1.25em 1.25em;
+        background-size: 2.5em 2.5em;
+      }
+      &Frame {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background-image: radial-gradient(#e8e8e8 0, #f8f8f8 0);
+      }
     }
   }
 

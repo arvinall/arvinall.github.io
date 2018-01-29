@@ -1,17 +1,18 @@
 /* eslint-disable */
-var list_element, aC,
-  fragment = document.createDocumentFragment();
-
 // Booklet section
 (function Booklet() {
-  var self = this,
+  var list_element, aC,
+    fragment = document.createDocumentFragment(),
+    self = this,
     activityOptions = {
       name: 'booklet',
       title: 'نبشته‌ها',
       loadChecker: [false, false],
       backTransaction: false,
       activation: Object.create(null)
-    }, activity, MD = new showdown.Converter();
+    },
+    activity,
+    MD = new showdown.Converter();
 
   // Apear and Disapear handler
   activityOptions.activation.on = (function bookletApear(cb) {
@@ -90,7 +91,84 @@ var list_element, aC,
 
         list_element[0].appendChild(fragment);
 
+
+
       }).call(Activity);
+      // Make background interactive
+      (function backgroundEffect (background) {
+        var bgCache = background.css('background-image'),
+        bgMain = background.parent(),
+        moveCache = 0,
+        steps, step = 1, handler, scrollCache = 0, stepCache;
+
+        function setStepsAndHandlers() {
+          if (this.scrollHeight > 0 && !steps) {
+            steps = this.scrollHeight / $(window).height();
+            if (steps < 4) {
+              steps = 4 * 2;
+            } else
+            if (steps > 5) {
+              steps = 5 * 2;
+            }
+
+            handler = function () {
+              if (scrollCache < this.scrollTop) {
+                if (step <= steps && !(step > steps)) {
+                  if (this.scrollTop > (($(window).height() / 2) * step) && this.scrollTop < (($(window).height() / 2) * step) + ($(window).height() / 2)) {
+                    if (stepCache !== step) {
+                      background.css('background-image', bgCache.replace('0px,', 100 / (steps - step) + '%,'));
+                    }
+                    stepCache = step;
+                    step++;
+                  }
+                } else
+                  if (step > steps) {
+                    stepCache = step;
+                    step = steps;
+                  } else
+                    if (step < 1) {
+                      stepCache = step;
+                      step = 1;
+                    }
+              } else
+                if (scrollCache > this.scrollTop) {
+                  if (step <= steps && !(step > steps)) {
+                    if (this.scrollTop === 0) {
+                      background.css('background-image', bgCache);
+                      stepCache = step;
+                      step--;
+                    } else
+                    if (this.scrollTop + $(window).height() < (($(window).height() / 2) * step) && this.scrollTop + $(window).height() > ((($(window).height() / 2) * step) - ($(window).height() / 2))) {
+                      if (stepCache !== step) {
+                        background.css('background-image', bgCache.replace('0px,', 100 / (steps - step) + '%,'));
+                      }
+                      stepCache = step;
+                      step--;
+                    }
+                  } else
+                    if (step < 1) {
+                      stepCache = step;
+                      step = 1;
+                    } else
+                      if (step > steps) {
+                        stepCache = step;
+                        step = steps;
+                      }
+                }
+            }.bind(this);
+          }
+        }
+
+        this.on('scroll', function () {
+          if (!steps) {
+            setStepsAndHandlers.call(this);
+          }
+          handler();
+
+          scrollCache = this.scrollTop;
+        });
+
+      }).call(list_element, $('.Activity[data-name="' + activityOptions.name + '"] .Activity__backgroundFrame'));
       // Make the slider
       (function slider() {
         var sliderFrame_Element = $('.Activity__sliderFrame'), slideElementMaker = function (options) {
